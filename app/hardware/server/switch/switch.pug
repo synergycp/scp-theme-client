@@ -1,0 +1,40 @@
+include /resources/pug/mixins/panel
+
++panel("{{ 'hardware.server.switch.TITLE' | translate }}")(
+  ng-class="switchControl.loader.class"
+)
+  .loader
+  .panel-body.text-center(ng-if="!switchControl.isEnabled")
+    p(translate="hardware.server.switch.NOT_ENABLED")
+  table.table.table-condensed.table-bordered(ng-if="switchControl.isEnabled")
+    //- Show border
+    tr
+      td.no-padding(colspan="3")
+    tr.mid-aligned
+      td.shrink.pad-right
+        strong(translate="hardware.server.switch.SPEED")
+      td(ng-bind="switchControl.server.switch.speed.name")
+
+      td.text-right.shrink(rowspan="100")
+        //- Start Buttons
+        span.btn-group-vertical
+          span.btn-group(uib-dropdown)
+            a.btn.btn-default(uib-dropdown-toggle)
+              span(translate="hardware.server.switch.power.DROPDOWN")
+              span &nbsp;
+              span.fa.fa-caret-down
+            ul.dropdown-menu(uib-dropdown-menu, role="menu")
+              li(role="menuitem")
+                a(
+                  ng-click="switchControl.patch({ power: 'on' })"
+                  translate="hardware.server.switch.power.ON"
+                )
+              li(role="menuitem")
+                a(
+                  ng-click="switchControl.patch({ power: 'off' })"
+                  translate="hardware.server.switch.power.OFF"
+                )
+        //- End Buttons
+
+  .panel-footer.clearfix(ng-class="switchControl.response ? '' : 'hidden'")
+    pre(ng-bind="switchControl.response")

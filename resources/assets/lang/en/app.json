@@ -1,0 +1,46 @@
+{
+  "title": "Synergy",
+  "topbar": {
+    "search": {
+      "PLACEHOLDER": "Type to search..."
+    }
+  },
+  "confirm": {
+    "delete": {
+      "TITLE": "Are you sure?",
+      "BODY": "This will permanently delete the following items:",
+      "CANCEL": "Cancel",
+      "SUBMIT": "Delete"
+    }
+  },
+  "sidebar": {
+    "WELCOME": "Welcome",
+    "heading": {
+      "HEADER": "Navigation"
+    },
+    "nav": {
+      "SINGLEVIEW": "Single View",
+      "menu": {
+        "MENU": "Menu",
+        "SUBMENU": "Sub Menu"
+      }
+    }
+  },
+  "right-sidebar": {
+    "user": {
+      "TITLE": "User Controls",
+      "links": {
+        "LOGOUT": "Logout"
+      }
+    },
+    "layout": {
+      "TITLE": "Layout Controls"
+    }
+  },
+  "action": {
+    "BULK": "With Selected:",
+    "VIEW": "view",
+    "MANAGE": "manage",
+    "DELETE": "delete"
+  }
+}

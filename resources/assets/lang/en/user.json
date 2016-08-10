@@ -1,0 +1,61 @@
+{
+  "account": {
+    "password": {
+      "SUBMIT": "Change Password",
+      "password": {
+        "LABEL": "Password",
+        "PLACEHOLDER": "Must be at least 6 characters."
+      },
+      "confirm": {
+        "LABEL": "Confirm",
+        "PLACEHOLDER": "Must match the password above."
+      }
+    },
+    "info": {
+      "EMAIL": "E-Mail Address",
+      "SIGNUP": "Signup Date"
+    }
+  },
+  "client": {
+    "modal": {
+      "delete": {
+        "TITLE": "Delete Clients",
+        "SUBMIT": "Delete",
+        "CANCEL": "Cancel",
+        "BODY": "Click \"Delete\" to permanently delete these Clients:"
+      }
+    },
+    "search": {
+      "TITLE": "Clients"
+    },
+    "list": {
+      "NO-SERVERS": "-",
+      "TITLE": "Clients"
+    },
+    "heading": {
+      "NAME": "Name",
+      "EMAIL": "E-Mail Address",
+      "SERVER-COUNT": "Servers",
+      "ACTIONS": "Actions"
+    },
+    "form": {
+      "title": {
+        "ADD": "Create Client",
+        "EDIT": "Edit {{ email }}"
+      },
+      "email": {
+        "LABEL": "Email"
+      },
+      "password": {
+        "LABEL": "Password",
+        "PLACEHOLDER": "Enter a password to set"
+      },
+      "billing_id": {
+        "LABEL": "Billing ID"
+      },
+      "name": {
+        "LABEL": "Name"
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+// START Top Navbar
+nav.navbar.topnavbar(role='navigation')
+  // START Nav wrapper
+  .nav-wrapper
+    // START Left navbar
+    ul.nav.navbar-nav
+      li
+        // Button to show/hide the sidebar on mobile. Visible on mobile only.
+        a(
+          href=''
+          ng-click="app.asideToggled = !app.asideToggled"
+          md-ink-ripple
+        ).visible-xs.sidebar-toggle
+          em.fa.fa-navicon
+      // Search icon
+      li.search-wrapper
+        top-nav-search
+
+
+      // END Left navbar
+
+    // START Right Navbar
+    ul.nav.navbar-nav.navbar-right
+      // START Offsidebar button
+      li
+        a(href='', ng-click="app.offsidebarOpen = !app.offsidebarOpen")
+          em.fa.fa-lg(ng-class="app.offsidebarOpen ? 'fa-angle-right' : 'fa-angle-left'")
+      // END Offsidebar menu
+
+    // END Right Navbar
+
+  // END Nav wrapper
+
+// END Top Navbar

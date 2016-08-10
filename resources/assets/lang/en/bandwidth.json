@@ -1,0 +1,32 @@
+{
+  "panel": {
+    "TITLE": "Bandwidth for {{ name }}"
+  },
+  "no-data-period": {
+    "TITLE": "No data found for that time period.",
+    "TEXT": "We don't have any bandwidth data recorded from {{ period }}."
+  },
+  "no-data": {
+    "TITLE": "Not enough data collected yet.",
+    "TEXT": "We haven't recorded enough bandwidth data on {{ name }} yet."
+  },
+  "not-enabled": {
+    "TITLE": "{{ name }}'s bandwidth is not enabled",
+    "TEXT": "This {{ type }} does not have bandwidth setup."
+  },
+  "billing": {
+    "USAGE": "You have used {{ used }} out of {{ max }} since {{ since }}."
+  },
+  "stats": {
+    "MIN": "Min",
+    "MAX": "Max",
+    "TOP": "95%",
+    "TOTAL": "Total",
+    "TOP-MAX": "95% Max",
+    "heading": {
+      "IN": "In",
+      "OUT": "Out",
+      "TOTAL": "Total"
+    }
+  }
+}

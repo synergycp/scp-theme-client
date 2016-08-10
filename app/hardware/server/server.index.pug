@@ -1,0 +1,8 @@
+extends /resources/pug/list-page
+include /resources/pug/mixins/list
+
+block list
+  list.panel.panel-default(list="vm.list")
+    list-header(text="hardware.server.list.TITLE")
+    server-table
+    list-footer

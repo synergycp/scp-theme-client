@@ -1,0 +1,64 @@
+include /resources/pug/mixins/panel
+
++panel("{{ 'hardware.server.assign.TITLE' | translate }}")
+  table.table
+    thead
+      tr
+        th(translate="hardware.server.assign.ITEM")
+        th(translate="hardware.server.assign.ASSIGNED")
+
+    tbody
+      tr
+        td
+          strong(translate="hardware.server.assign.client.TITLE")
+        td(ng-init="access = assign.server.access")
+          a(
+            ng-if="access.sub"
+            ui-sref="app.hardware.server.list({ client: access.sub.client.id })"
+            ng-bind="access.sub.client.name"
+          )
+          span(
+            ng-if="!access.sub"
+            translate="hardware.server.assign.client.NONE"
+          )
+          span  (
+          a(
+            ng-click="assign.client.modal()"
+            translate="hardware.server.assign.client.{{ access.sub ? 'REASSIGN' : 'ASSIGN' }}"
+          )
+          span )
+      tr(ng-if="assign.entities.items.length")
+        td(colspan="2")
+
+      //- Start Entities
+      tr(ng-repeat-start="entity in assign.entities.items")
+        td
+          strong(translate="hardware.server.assign.entity.TITLE")
+        td(ng-bind="entity.nickname")
+
+      //- Start IPv4
+      tr(ng-if-start="entity.v4")
+        td
+          span(translate="hardware.server.assign.entity.v4.USABLE")
+        td(ng-bind="entity.v4.full")
+      tr
+        td
+          span(translate="hardware.server.assign.entity.v4.GATEWAY")
+        td(ng-bind="entity.v4.gateway")
+      tr(ng-if-end)
+        td
+          span(translate="hardware.server.assign.entity.v4.SUBNET")
+        td(ng-bind="entity.v4.subnet_mask")
+      //- End IPv4
+
+      //- Start IPv6
+      tr(ng-if-start="entity.v6")
+        td
+          span(translate="hardware.server.assign.entity.v6.ADDRESS")
+        td(ng-bind="entity.v6.address")
+      tr(ng-if-end, ng-repeat-end)
+        td
+          span(translate="hardware.server.assign.entity.v6.GATEWAY")
+        td(ng-bind="entity.v6.gateway")
+      //- End IPv6
+      //- End Entities
