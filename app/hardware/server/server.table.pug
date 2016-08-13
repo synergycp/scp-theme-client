@@ -28,18 +28,38 @@ block headings
   th Actions
 
 block columns
-  td(ng-if="table.showSrvId") {{ row.srv_id }}
-  td(ng-if="table.showNickname") {{ row.nickname }}
-  td(ng-if="table.showIp") {{ row.entity.full_ip || '-' }}
+  td(
+    ng-if="table.showSrvId"
+    ng-bind="row.srv_id"
+  )
+  td(ng-if="table.showNickname" width="250px")
+    editable(
+      value="row.nickname"
+      on-save="table.saveNickname(row)"
+    )
+  td(
+    ng-if="table.showIp"
+    ng-bind="row.entity.full_ip || '-'"
+  )
   td(ng-if="table.showClient")
     a(
       ng-if="row.access.sub"
       ui-sref="app.hardware.server.list({ client: row.access.sub.client.id })"
-    ) {{ row.access.sub.client.name }}
+      ng-bind="row.access.sub.client.name"
+    )
     span(ng-if="!row.access.sub") -
-  td(ng-if="table.showStatus") {{ row.status_desc }}
-  td(ng-if="table.showCpu") {{ row.cpu.name }}
-  td(ng-if="table.showRam") {{ row.mem.name }}
+  td(
+    ng-if="table.showStatus"
+    ng-bind="row.status_desc"
+  )
+  td(
+    ng-if="table.showCpu"
+    ng-bind="row.cpu.name"
+  )
+  td(
+    ng-if="table.showRam"
+    ng-bind="row.mem.name"
+  )
   td(ng-if="table.showHdds")
     span(ng-repeat="hdd in row.hdd_counts track by hdd.value")
       span(ng-if="hdd.key > 1", ng-bind="hdd.key+'x '")

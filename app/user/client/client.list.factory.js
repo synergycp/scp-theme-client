@@ -12,7 +12,9 @@
    */
   function ClientListFactory (List) {
     return function () {
-      var list = List('client');
+      var list = List('client').filter({
+        not_me: true,
+      });
 
       return list;
     };

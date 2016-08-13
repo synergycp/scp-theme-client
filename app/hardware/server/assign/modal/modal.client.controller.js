@@ -36,7 +36,9 @@
     }, access || {});
 
     modal.servers = servers;
-    modal.client = Select('client');
+    modal.client = Select('client').filter({
+      not_me: true,
+    });
     modal.submit = submit;
     modal.mode = _.assign({
       value: MODE.SEARCH,

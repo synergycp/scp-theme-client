@@ -5,7 +5,7 @@
     .module('app.hardware.server')
     .component('serverTable', {
       require: {
-        list: '\^list',
+        list: '^list',
       },
       bindings: {
         showSrvId: '=?',
@@ -31,6 +31,7 @@
     var table = this;
 
     table.$onInit = init;
+    table.saveNickname = saveNickname;
 
     ///////////
 
@@ -44,6 +45,12 @@
         showCpu: true,
         showRam: false,
         showHdds: false,
+      });
+    }
+
+    function saveNickname(row) {
+      return row.patch({
+        nickname: row.nickname,
       });
     }
   }
