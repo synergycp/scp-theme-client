@@ -1,0 +1,21 @@
+.hoverable.editable(
+  ng-if="editable.mode.value === editable.mode.VIEW"
+)
+  span(ng-bind="editable.value")
+  .show-hover
+    span.fa.fa-pencil(ng-click="editable.setEditMode($event)")
+
+form.input-group(
+  ng-if="editable.mode.value === editable.mode.EDIT"
+  ng-class="editable.loader.class"
+  ng-submit="editable.submit()"
+  ng-click="$event.stopPropagation()"
+)
+  .loader
+  input.form-control(
+    type="text"
+    ng-model="editable.value"
+  )
+  .input-group-btn
+    button.btn.btn-primary(type="submit")
+      span.fa.fa-check
