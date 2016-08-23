@@ -8,15 +8,13 @@
 
   angular
     .module('app.auth')
-    .controller('AuthLoginController', AuthLoginController);
+    .controller('AuthLoginCtrl', AuthLoginCtrl);
 
   /**
    * @ngInject
    */
-  function AuthLoginController(Auth, Alert) {
-    var login = this;
-
-    login.type = 'client';
+  function AuthLoginCtrl(Auth, Alert) {
+    var vm = this;
 
     activate();
 
@@ -24,25 +22,20 @@
 
     function activate() {
       // Bound form data
-      login.account = {
+      vm.account = {
         email: "",
         password: ""
       };
-      login.form = null;
+      vm.form = null;
 
-      // Error message
-      login.authMsg = '';
-
-      login.submit = handleForm;
+      vm.login = handleLoginForm;
     }
 
-    function handleForm() {
-      login.authMsg = '';
-
-      if (!login.form.$valid) {
+    function handleLoginForm() {
+      if (!vm.form.$valid) {
         // set as dirty if the user click directly to login,
         // so we show the validation messages.
-        login.form.email.$dirty = login.form.password.$dirty = true;
+        vm.form.email.$dirty = vm.form.password.$dirty = true;
 
         return;
       }
@@ -51,7 +44,7 @@
 
       var remember = false; // TODO
 
-      Auth
+      return Auth
         .login(credentials(), remember)
         .catch(handleError)
         ;
@@ -59,9 +52,8 @@
 
     function credentials() {
       return {
-        type: login.type,
-        email: login.account.email,
-        password: login.account.password
+        email: vm.account.email,
+        password: vm.account.password
       };
     }
 

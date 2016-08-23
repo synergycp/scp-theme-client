@@ -10,7 +10,7 @@
    *
    * @ngInject
    */
-  function ApiKey ($localStorage) {
+  function ApiKey($localStorage) {
     var apiKey = this;
     var _apiKey = getApiKeyFromStorage();
 
