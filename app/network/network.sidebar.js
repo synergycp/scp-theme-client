@@ -3,16 +3,15 @@
 
   angular
     .module('app.network')
-    .config(SidebarConfig)
+    .config(NavConfig)
     ;
 
   /**
    * @ngInject
    */
-  function SidebarConfig(SidebarProvider) {
-    SidebarProvider.group('network', {
-      translate: "sidebar.network.TITLE",
-      sref: "#",
+  function NavConfig(NavProvider) {
+    NavProvider.group('network', {
+      translate: "nav.network.TITLE",
       icon: "fa fa-sitemap",
     });
   }

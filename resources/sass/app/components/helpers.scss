@@ -5,6 +5,10 @@
   }
 }
 
+.block {
+  display: block;
+}
+
 .no-padding {
   padding: 0 !important;
 }
@@ -74,15 +78,15 @@ $gutter: 15px;
   margin: 0 !important;
 }
 
+.hoverable:hover .show-hover {
+  opacity: 1;
+  z-index: 999;
+}
+
 .show-hover {
   opacity: 0;
   z-index: -1;
   transition: opacity .5s ease, z-index .5s ease;
-}
-
-.hoverable:hover .show-hover {
-  opacity: 1;
-  z-index: 999;
 }
 
 .editable {
