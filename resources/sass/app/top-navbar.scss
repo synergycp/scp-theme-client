@@ -22,52 +22,38 @@ $nav-top-bg-start: $nav-top-bg;
 $nav-top-bg-end: $brand-info-light;
 $nav-header-bg: transparent;
 
-$nav-top-item-mobile: $nav-top-bg;
-$nav-top-item-mobile-active: darken($nav-top-item-mobile, 20%);
+$nav-top-item-desktop: #e3e3e3;
+$nav-top-item-desktop-active: #fff;
 
-$nav-top-item-desktop: #fff;
-$nav-top-item-desktop-active: $nav-top-item-mobile-active;
+$nav-top-item-mobile: $nav-top-item-desktop;
+$nav-top-item-mobile-active: $nav-top-item-desktop-active;
 
 // Navbar top layout
 .topnavbar {
+  position: relative;
   -webkit-backface-visibility: hidden;
   /* fixes chrome jump */
   margin-bottom: 0;
   border-radius: 0;
-  background-color: #fff;
   z-index: 1050;
   border: 0;
   border-bottom: 1px solid rgba(0,0,0,.15);
+  background-color: $nav-top-bg;
+  @include gradient-vertical($nav-top-bg-end, $nav-top-bg-start);
   @include material-shadow();
-  @media only screen and (min-width: $mq-tablet) {
-    box-shadow: 0 0 0 #000;
 
-    .navbar-header {
-      width: $nav-header-wd;
-      text-align: center;
-
-      .navbar-brand {
-        width: 100%;
-      }
-    }
+  .navbar-text {
+    color: #ccc;
   }
-}
 
-// Navbar Mobile General styles
-// ------------------------------
-
-.topnavbar {
-  position: relative;
+  .top-nav-links {
+    position: absolute;
+    top: -65px;
+    transition: top .5s ease;
+  }
 
   .navbar-header {
     background-color: $nav-header-bg;
-    @include gradient-horizontal($nav-top-bg-start, $nav-top-bg-end);
-    @media only screen and (min-width: $mq-tablet) {
-      background-image: none;
-    }
-  }
-
-  .navbar-header {
     position: relative;
     // overlaps nav-wrapper
     z-index: 11;
@@ -94,48 +80,112 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
       display: none;
       padding: 10px 15px;
     }
-  }
 
-  .navbar-nav > .open > a,
-  .navbar-nav > li > a {
-    color: $nav-top-item-mobile;
-
-    &:focus,
-    &:hover {
-      color: $nav-top-item-mobile-active;
-    }
-  }
-
-  // Navbar link active style
-  .navbar-nav > .active > a,
-  .navbar-nav > .open > a {
-    &,
-    &:focus,
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
-  // the button to toggle search
-  .navbar-nav > li > [data-toggle='navbar-search'] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 20;
-    font-size: 16px;
-    line-height: $navbar-height;
-    color: #fff;
-    padding-top: 0;
-    padding-bottom: 0;
-    @include transition(color .3s ease);
+    @include gradient-horizontal($nav-top-bg-start, $nav-top-bg-end);
     @media only screen and (min-width: $mq-tablet) {
-      color: $nav-top-item-desktop;
+      background-image: none;
     }
   }
 
+  .navbar-nav {
+    li {
+      position: relative;
+    }
+    .open a,
+    li a {
+      color: $nav-top-item-mobile;
+
+      &:focus,
+      &:hover {
+        color: $nav-top-item-mobile-active;
+      }
+
+      &.ico-link {
+        line-height: 23px;
+        text-align: center;
+        padding: 12px 5px 0;
+
+        .ico {
+          font-size: 1.5em;
+        }
+      }
+
+      .link-text {
+        display: block;
+      }
+
+      .label {
+        position: absolute;
+        top: 27px;
+        right: auto;
+        left: auto;
+        margin-left: 1.7em;
+      }
+    }
+
+    // Navbar link active style
+    .active a,
+    .open a {
+      &,
+      &:focus,
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  $search-height: $navbar-height;
+
+  .search-wrapper {
+    .search-navbar {
+      .search-icon {
+        display: block;
+        float: left;
+        margin: 24px 22px 0 10px;
+        font-size: 1.4em;
+        color: #ddd;
+      }
+
+      .search-form {
+        float: left;
+        margin: 0;
+      }
+
+      .search-input {
+        height: $search-height;
+        line-height: $search-height;
+        font-size: 1.5em;
+        background: transparent;
+        border: none;
+        font-weight: 300;
+        color: #eee;
+
+        &::-webkit-input-placeholder {
+          color: rgba(250,250,250,.8);
+        }
+      }
+
+      .search-icon,
+      .search-input {
+        text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+      }
+    }
+  }
+  @media only screen and (min-width: $mq-tablet) {
+    box-shadow: 0 0 0 #000;
+
+    .navbar-header {
+      width: $nav-header-wd;
+      text-align: center;
+
+      .navbar-brand {
+        width: 100%;
+      }
+    }
+  }
 }
 @media only screen and (max-width: $mq-up-to-tablet) {
-  .sidebar-toggle {
+  .nav-toggle {
     position: absolute !important;
     top: 0;
     right: 0;
@@ -148,6 +198,10 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
       color: white;
     }
   }
+}
+
+.sidebar-top .top-nav-links {
+  top: 0;
 }
 
 // contains elements below header
@@ -180,127 +234,20 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
   }
 }
 
-// Navbar Search Form
-// ------------------------------
-.topnavbar {
-  .navbar-form {
-    position: absolute;
-    top: -100%;
-    left: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    height: $navbar-height;
-    z-index: 9001;
-    @include transition(all .3s);
-    border: 0;
-    border-bottom: 1px solid #e1e2e3;
-
-    .form-group {
-      height: 100%;
-      width: 100%;
-    }
-
-    .form-control {
-      height: 100%;
-      border: 0;
-      border-radius: 0;
-      width: 100%;
-    }
-
-    &.open {
-      top: 0;
-    }
-
-    // re locate and center feedback
-    .has-feedback .form-control-feedback {
-      height: 30px;
-      cursor: pointer;
-      top: 50%;
-      margin-top: -15px;
-      line-height: 30px;
-      margin-right: 10px;
-      color: #c1c2c3;
-      font-size: 1.5em;
-      pointer-events: auto; // make icon clickable
-    }
-  }
-  @media only screen and (min-width: $mq-tablet) {
-    .navbar-form {
-      left: $nav-header-wd;
-    }
-  }
-
-  $search-height: $navbar-height;
-
-  .search-wrapper {
-    .search-navbar {
-      .search-icon {
-        display: block;
-        float: left;
-        margin: 24px 22px 0 10px;
-        font-size: 1.4em;
-        color: #ddd;
-      }
-
-      .search-form {
-        float: left;
-        margin: 0;
-      }
-
-      .search-input {
-        height: $search-height;
-        line-height: $search-height;
-        font-size: 1.5em;
-        background: transparent;
-        border: none;
-        font-weight: 300;
-        color: #eee;
-        &::-webkit-input-placeholder {
-          color: rgba(250,250,250,.8);
-        }
-      }
-
-      .search-icon, .search-input {
-        text-shadow: 1px 1px 0 rgba(0,0,0,.3);
-      }
-    }
-  }
-
-}
-
 // Navbar Desktop styles
 // ------------------------------
 @media only screen and (min-width: $mq-tablet) {
 
   // Navbar top styles
   .topnavbar {
-
-    border: 0;
-    background-color: $nav-top-bg;
-    @include gradient-vertical($nav-top-bg-end, $nav-top-bg-start);
-
-    .navbar-header {
-      @include gradient-remove();
-    }
-
     // Dropdown link open style
     .navbar-nav > a {
       box-shadow: 0 0 0 #000 inset;
       @include transition(all .2s);
     }
 
-    .navbar-nav > .open > a {
-      &,
-      &:focus,
-      &:hover {
-        box-shadow: 0 -3px 0 $brand-primary inset;
-        @include transition(all .2s);
-      }
-    }
-
-    .navbar-nav > .open > a,
-    .navbar-nav > li > a {
+    .navbar-nav .open a,
+    .navbar-nav li a {
       color: $nav-top-item-desktop;
 
       &:focus,
@@ -308,12 +255,6 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
         color: $nav-top-item-desktop-active;
       }
     }
-
-    // relocate search toggle button
-    .navbar-nav > li > [data-toggle='navbar-search'] {
-      position: static;
-    }
-
   }
   // .topnavbar
 
@@ -324,7 +265,7 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
     z-index: 10;
 
     // restore nav items positions
-    .nav > li {
+    .nav li {
       position: relative;
     }
 

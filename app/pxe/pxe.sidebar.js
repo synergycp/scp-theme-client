@@ -3,20 +3,20 @@
 
   angular
     .module('app.pxe')
-    .config(SidebarConfig)
+    .config(NavConfig)
     ;
 
   /**
    * @ngInject
    */
-  function SidebarConfig(SidebarProvider) {
-    SidebarProvider.group('pxe', {
-      translate: "sidebar.pxe.TITLE",
-      sref: "app.pxe.install",
+  function NavConfig(NavProvider) {
+    NavProvider.group('pxe', {
+      translate: "nav.pxe.TITLE",
+      sref: "app.pxe.install.list",
       icon: "fa fa-upload",
     }).item({
       text: "OS Reloads",
-      sref: "app.pxe.install",
+      sref: "app.pxe.install.list",
     })
     ;
   }

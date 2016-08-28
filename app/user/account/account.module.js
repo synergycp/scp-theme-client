@@ -3,5 +3,6 @@
 
   angular
     .module('app.user.account', [
+      'app.user.account.layout',
     ]);
 })();

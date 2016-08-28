@@ -12,8 +12,9 @@
         url: '/account',
         abstract: true,
         template: helper.dummyTemplate,
+        resolve: helper.resolveFor('lang:account'),
       })
-      .state('app.user.account.list', {
+      .state('app.user.account.index', {
         url: '',
         title: 'Account',
         templateUrl: helper.basepath('user/account/account.html'),
