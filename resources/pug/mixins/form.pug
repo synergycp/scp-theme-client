@@ -37,7 +37,7 @@ mixin checkbox(label, name)
         type="checkbox"
         name=name
       )&attributes(attributes)
-      =label
+      span(translate=label)
       block
 
 mixin select(label, name)
