@@ -118,7 +118,7 @@
         // float aside uses extra padding on aside
         var mar = parseInt($asideInner.css('padding-top'), 0) +
                   parseInt($aside.css('padding-top'), 0);
-        var subNav = ul.clone().appendTo($aside);
+        var subNav = ul.appendTo($aside);
         var $position = $listItem.position();
 
         toggleTouchItem($listItem);
@@ -143,8 +143,17 @@
           .css(css);
 
         subNav.on('mouseleave', function () {
+          if (!Utils.isNavCollapsed()) {
+            return;
+          }
+
           toggleTouchItem($listItem);
-          subNav.remove();
+          subNav.appendTo($listItem)
+            .removeClass(floatClass)
+            .css({
+              position: 'static',
+            })
+            ;
         });
 
         return subNav;
@@ -174,7 +183,7 @@
 
     function removeFloatingNav() {
       $('.dropdown-backdrop').remove();
-      $('.nav-subnav.nav-floating').remove();
+      $('.nav-subnav.nav-floating').trigger('mouseleave');
       $('.nav li.open').removeClass('open');
     }
   }
