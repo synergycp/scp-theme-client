@@ -143,8 +143,17 @@
           .css(css);
 
         subNav.on('mouseleave', function () {
+          if (!Utils.isNavCollapsed()) {
+            return;
+          }
+
           toggleTouchItem($listItem);
-          subNav.appendTo($listItem).removeClass(floatClass);
+          subNav.appendTo($listItem)
+            .removeClass(floatClass)
+            .css({
+              position: 'static',
+            })
+            ;
         });
 
         return subNav;
