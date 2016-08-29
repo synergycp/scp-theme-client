@@ -51,9 +51,8 @@
     //////////
 
     function activate() {
-      // TODO: load panels while vm.server is loading
-      // (causes issue with vm.server properties missing)
-      vm.server.load()
+      vm.server
+        .load()
         .then(loadPanels);
 
       $scope.$on('$routeUpdate', syncStateToFilter);
@@ -61,7 +60,8 @@
     }
 
     function loadServer() {
-      return $api.get()
+      return $api
+        .get()
         .then(storeServer)
         ;
     }
@@ -104,16 +104,16 @@
         context: panelContext,
       },]);
 
-      _.setContents(vm.panels.right, [{
+      _.setContents(vm.panels.right, _.filter([vm.server.access.switch && {
         templateUrl: PANELS+'/panel.control.switch.html',
         context: panelContext,
-      }, {
+      }, vm.server.access.ipmi && {
         templateUrl: PANELS+'/panel.control.ipmi.html',
         context: panelContext,
-      }, {
+      }, vm.server.access.pxe && {
         templateUrl: PANELS+'/panel.os-reload.html',
         context: panelContext,
-      },]);
+      },]));
     }
 
     function syncStateToFilter() {
