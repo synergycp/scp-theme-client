@@ -274,3 +274,16 @@ $tablet-landscape: 1025px;
     }
   }
 }
+
+.nav-floating {
+  .label {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 1.4em;
+    line-height: 1.2em;
+    display: block;
+    right: 20px;
+  }
+}
