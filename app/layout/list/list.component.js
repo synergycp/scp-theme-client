@@ -7,6 +7,7 @@
       transclude: true,
       bindings: {
         list: '=',
+        hideLoader: '=?',
       },
       scope: {},
       templateUrl: 'app/layout/list/list.html',

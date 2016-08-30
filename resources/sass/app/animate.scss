@@ -9,7 +9,7 @@ $animate-duration: 0.4s;
 
 
 // Timing functions
-// ----------------------------------- 
+// -----------------------------------
 
 // Cubic
 $easeInCubic:  cubic-bezier(0.550, 0.055, 0.675, 0.190);
@@ -52,7 +52,7 @@ $easeOutBack:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
 $easeInOutBack:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 // Angular standard animation state
-// ----------------------------------- 
+// -----------------------------------
 [ui-view].ng-leave {
     display: none !important;
     &.ng-fluid {
@@ -77,8 +77,21 @@ $easeInOutBack:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 // Animations adapted for ngAnimate
-// ----------------------------------- 
+// -----------------------------------
 
+.ng-slideInOut {
+  transition: height 0.25s ease;
+  overflow: hidden;
+
+  &.ng-enter {
+    height: 70px;
+    @include animation(fadeIn $animate-duration);
+  }
+  &.ng-leave {
+    height: 0px;
+    @include animation(fadeOut $animate-duration);
+  }
+}
 .ng-fadeIn {
   &.ng-enter { @include animation(fadeIn $animate-duration);  }
   &.ng-leave { @include animation(fadeOut $animate-duration); }
@@ -130,9 +143,9 @@ $easeInOutBack:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 
-// Animate.css - http://daneden.me/animate  
+// Animate.css - http://daneden.me/animate
 // animo support
-// ----------------------------------- 
+// -----------------------------------
 
 .animated {
   -webkit-animation-duration: 1s;
@@ -3253,7 +3266,7 @@ $easeInOutBack:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 // New Animations
-// ----------------------------------- 
+// -----------------------------------
 
 @-webkit-keyframes fadeOutUpShort {
   0% {

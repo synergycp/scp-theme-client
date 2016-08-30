@@ -30,7 +30,8 @@
     },
     "list": {
       "NO-SERVERS": "-",
-      "TITLE": "Clients"
+      "TITLE": "Sub Clients",
+      "EMPTY": "No Sub Clients found. You can create one below, which will allow you to add that client to any of your servers."
     },
     "heading": {
       "NAME": "Name",

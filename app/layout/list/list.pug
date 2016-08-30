@@ -2,5 +2,5 @@ doctype html
 .relative(
   ng-class="listCtrl.list.loader.class"
 )
-  .loader
+  .loader(ng-if="!listCtrl.hideLoader")
   div(ng-transclude)
