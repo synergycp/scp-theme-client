@@ -1,5 +1,6 @@
 (function () {
-  angular.module('app.core.routes')
+  angular
+    .module('app.hardware')
     .config(routeConfig);
 
   /**

@@ -1,6 +1,6 @@
 (function () {
   angular
-    .module('app.core.routes')
+    .module('app.user')
     .config(routeConfig)
     ;
 
