@@ -5,7 +5,6 @@ Synergy Control Panel Client Default Theme
 
 ```
 npm install
-bower install
 gulp
 ```
 
