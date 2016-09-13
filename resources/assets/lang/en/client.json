@@ -1,0 +1,6 @@
+{
+  "search": {
+    "TITLE": "Clients",
+    "SERVERS": "{{ servers }} Server{{ servers === '1' ? '' : 's' }}"
+  }
+}
