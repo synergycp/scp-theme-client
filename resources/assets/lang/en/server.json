@@ -1,2 +1,6 @@
 {
+  "search": {
+    "TITLE": "Servers",
+    "EMPTY": "No IP or sub-client Assigned"
+  }
 }

@@ -3,5 +3,6 @@
 
   angular
     .module('app.user.client', [
+      'app.user.client.search',
     ]);
 })();
