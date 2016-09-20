@@ -18,12 +18,7 @@
         url: '/server',
         abstract: true,
         template: helper.dummyTemplate,
-      })
-      .state('app.hardware.server.list', {
-        url: '?client',
-        title: 'Servers',
-        controller: 'ServerIndexCtrl as vm',
-        templateUrl: helper.basepath('hardware/server/server.index.html'),
+        resolve: helper.resolveFor('lang:server'),
       })
       .state('app.hardware.server.view', {
         url: '/:id',

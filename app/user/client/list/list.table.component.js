@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.user.client')
+    .module('app.user.client.list')
     .component('clientTable', {
       require: {
         list: '\^list',
@@ -15,7 +15,7 @@
       },
       controller: 'ClientTableCtrl as table',
       transclude: true,
-      templateUrl: 'app/user/client/client.table.html'
+      templateUrl: 'app/user/client/list/list.table.html'
     })
     .controller('ClientTableCtrl', ClientTableCtrl)
     ;
@@ -23,7 +23,7 @@
   /**
    * @ngInject
    */
-  function ClientTableCtrl() {
+  function ClientTableCtrl(_) {
     var table = this;
 
     table.$onInit = init;

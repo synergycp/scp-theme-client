@@ -1,6 +1,8 @@
 (function () {
-  angular.module('app.user.client')
-    .config(routeConfig);
+  angular
+    .module('app.user.client')
+    .config(routeConfig)
+    ;
 
   /**
    * @ngInject
@@ -12,12 +14,7 @@
         url: '/client',
         abstract: true,
         template: helper.dummyTemplate,
-      })
-      .state('app.user.client.list', {
-        url: '',
-        title: 'Clients',
-        templateUrl: helper.basepath('user/client/client.index.html'),
-        controller: 'ClientIndexCtrl as vm'
+        resolve: helper.resolveFor('lang:client'),
       })
       ;
   }

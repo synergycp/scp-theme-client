@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.hardware.server')
+    .module('app.hardware.server.list')
     .component('serverTable', {
       require: {
         list: '^list',
@@ -19,7 +19,7 @@
       },
       controller: 'ServerTableCtrl as table',
       transclude: true,
-      templateUrl: 'app/hardware/server/server.table.html'
+      templateUrl: 'app/hardware/server/list/list.table.html'
     })
     .controller('ServerTableCtrl', ServerTableCtrl)
     ;

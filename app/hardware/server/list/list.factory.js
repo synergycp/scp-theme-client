@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.hardware')
+    .module('app.hardware.server.list')
     .factory('ServerList', ServerListFactory);
 
   /**
@@ -10,7 +10,7 @@
    *
    * @ngInject
    */
-  function ServerListFactory (
+  function ServerListFactory(
     _,
     List,
     ListConfirm,

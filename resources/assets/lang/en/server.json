@@ -1,4 +1,16 @@
 {
+  "list": {
+    "TITLE": "Servers",
+    "filter": {
+      "search": {
+        "LABEL": "Search",
+        "PLACEHOLDER": "Type to search..."
+      }
+    }
+  },
+  "table-action": {
+    "MANAGE": "manage"
+  },
   "search": {
     "TITLE": "Servers",
     "EMPTY": "No IP or sub-client Assigned"
