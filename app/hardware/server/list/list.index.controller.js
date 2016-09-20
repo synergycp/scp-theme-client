@@ -11,25 +11,17 @@
    *
    * @ngInject
    */
-  function ServerIndexCtrl(ServerList) {
+  function ServerIndexCtrl(ServerList, ListFilter) {
     var vm = this;
 
     vm.list = ServerList();
-    vm.create = {
-      input: {},
-      submit: create,
-    };
+    vm.filters = ListFilter(vm.list);
 
     activate();
 
     ////////////
 
     function activate() {
-      vm.list.load();
-    }
-
-    function create() {
-      vm.list.create(vm.create.getData());
     }
   }
 })();

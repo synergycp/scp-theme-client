@@ -2,17 +2,20 @@
   'use strict';
 
   angular
-    .module('app.user')
-    .controller('ClientIndexCtrl', ClientIndexCtrl);
+    .module('app.user.client')
+    .controller('ClientIndexCtrl', ClientIndexCtrl)
+    ;
 
   /**
+   * ClientIndex Controller
+   *
    * @ngInject
    */
-  function ClientIndexCtrl(ClientList) {
+  function ClientIndexCtrl(ClientList, ListFilter) {
     var vm = this;
 
     vm.list = ClientList();
-
+    vm.filters = ListFilter(vm.list);
     vm.create = {
       input: {},
       submit: create,
@@ -23,7 +26,6 @@
     ////////////
 
     function activate() {
-      vm.list.load();
     }
 
     function create() {

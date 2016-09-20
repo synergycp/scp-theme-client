@@ -2,15 +2,18 @@
   'use strict';
 
   angular
-    .module('app.user.client')
-    .factory('ClientList', ClientListFactory);
+    .module('app.user.client.list')
+    .factory('ClientList', ClientListFactory)
+    ;
 
   /**
    * ClientList Factory
    *
    * @ngInject
    */
-  function ClientListFactory (List) {
+  function ClientListFactory(
+    List
+  ) {
     return function () {
       var list = List('client').filter({
         not_me: true,
