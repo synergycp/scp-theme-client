@@ -24,7 +24,6 @@
         url: '/:id',
         abstract: true,
         template: helper.dummyTemplate,
-        resolve: helper.resolveFor('lang:pxe', 'lang:bandwidth'),
       })
       .state('app.hardware.server.view.manage', {
         url: '?bandwidth.start&bandwidth.end',
@@ -35,6 +34,7 @@
         resolve: helper.resolveFor(
           'chart-js', 'after:ng-chart-js',
           'moment', 'after:date-range-picker',
+          'lang:os-reload', 'lang:bandwidth',
           'numeral'
         ),
       })
