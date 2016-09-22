@@ -51,36 +51,6 @@
       "RAM": "RAM",
       "SRV_ID": "Server ID"
     },
-    "ipmi": {
-      "TITLE": "IPMI Controls",
-      "NOT_ENABLED": "This server has not been assigned an IPMI IP, username, or password.",
-      "ADDRESS": "IPMI IP Address",
-      "BMC": "Reset BMC",
-      "PXE": "PXE Boot",
-      "client": {
-        "USER": "Client Username",
-        "PASS": "Client Password",
-        "EMPTY": "Not created",
-        "CREATE": "create",
-        "DELETE": "delete",
-        "dropdown": {
-          "TITLE": "Client User",
-          "CREATE": "Setup User",
-          "DELETE": "Delete User"
-        }
-      },
-      "power": {
-        "STATUS": "Power Status",
-        "CHECKED": "Last Checked",
-        "dropdown": {
-          "TITLE": "Power",
-          "ON": "Power On",
-          "CYCLE": "Power Reset",
-          "SOFT": "Soft Shutdown",
-          "OFF": "Power Off"
-        }
-      }
-    },
     "list": {
       "TITLE": "Servers"
     },

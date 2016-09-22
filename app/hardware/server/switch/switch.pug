@@ -18,21 +18,24 @@ include /resources/angle/pug/mixins/panel
       td.text-right.shrink(rowspan="100")
         //- Start Buttons
         span.btn-group-vertical
-          span.btn-group(uib-dropdown)
-            a.btn.btn-default(uib-dropdown-toggle)
-              span(translate="hardware.server.switch.power.DROPDOWN")
+          span.btn-group(uib-dropdown="")
+            a.btn.btn-default(uib-dropdown-toggle="")
+              span(translate="server.switch.power.BTN")
               span &nbsp;
               span.fa.fa-caret-down
-            ul.dropdown-menu(uib-dropdown-menu, role="menu")
+            ul.dropdown-menu.dropdown-menu-right(
+              uib-dropdown-menu=""
+              role="menu"
+            )
               li(role="menuitem")
                 a(
-                  ng-click="switchControl.patch({ power: 'on' })"
-                  translate="hardware.server.switch.power.ON"
+                  ng-click="switchControl.power.on()"
+                  translate="server.switch.power.on.BTN"
                 )
               li(role="menuitem")
                 a(
-                  ng-click="switchControl.patch({ power: 'off' })"
-                  translate="hardware.server.switch.power.OFF"
+                  ng-click="switchControl.power.off()"
+                  translate="server.switch.power.off.BTN"
                 )
         //- End Buttons
 
