@@ -8,6 +8,10 @@
       'ui.select',
       'app.hardware.server.assign',
       'app.hardware.server.bandwidth',
+      'app.hardware.server.list',
       'app.hardware.server.manage',
+      'app.hardware.server.search',
+
+      'scp.angle.hardware.server',
     ]);
 })();

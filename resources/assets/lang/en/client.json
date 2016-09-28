@@ -1,0 +1,15 @@
+{
+  "list": {
+    "TITLE": "Sub Clients",
+    "filter": {
+      "search": {
+        "LABEL": "Search",
+        "PLACEHOLDER": "Type to search..."
+      }
+    }
+  },
+  "search": {
+    "TITLE": "Clients",
+    "SERVERS": "{{ servers }} Server{{ servers === '1' ? '' : 's' }}"
+  }
+}

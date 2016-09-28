@@ -1,0 +1,73 @@
+extends /resources/angle/pug/table-checkable
+
+block headings
+  th.sortable(ng-if="table.showSrvId")
+    span(translate="hardware.server.heading.SRV_ID")
+    sort(col="srv_id")
+  th.sortable(ng-if="table.showNickname")
+    span(translate="hardware.server.heading.NICKNAME")
+    sort(col="nickname")
+  th.sortable(ng-if="table.showIp")
+    span(translate="hardware.server.heading.IP")
+    sort(col="ip")
+  th.sortable(ng-if="table.showClient")
+    span(translate="hardware.server.heading.CLIENT")
+    sort(col="client")
+  th.sortable(ng-if="table.showStatus")
+    span(translate="hardware.server.heading.STATUS")
+    sort(col="status")
+  th.sortable(ng-if="table.showCpu")
+    span(translate="hardware.server.heading.CPU")
+    sort(col="cpu")
+  th.sortable(ng-if="table.showRam")
+    span(translate="hardware.server.heading.RAM")
+    sort(col="mem")
+  th.sortable(ng-if="table.showHdds")
+    span(translate="hardware.server.heading.HDDS")
+    sort(col="hdds")
+  th Actions
+
+block columns
+  td(
+    ng-if="table.showSrvId"
+    ng-bind="row.srv_id"
+  )
+  td(ng-if="table.showNickname" width="250px")
+    editable(
+      value="row.nickname"
+      on-save="table.saveNickname(row)"
+    )
+  td(
+    ng-if="table.showIp"
+    ng-bind="row.entity.full_ip || '-'"
+  )
+  td(ng-if="table.showClient")
+    a(
+      ng-if="row.access.sub"
+      ui-sref="app.hardware.server.list({ client: row.access.sub.client.id })"
+      ng-bind="row.access.sub.client.name"
+    )
+    span(ng-if="!row.access.sub") -
+  td(
+    ng-if="table.showStatus"
+    ng-bind="row.status_desc"
+  )
+  td(
+    ng-if="table.showCpu"
+    ng-bind="row.cpu.name"
+  )
+  td(
+    ng-if="table.showRam"
+    ng-bind="row.mem.name"
+  )
+  td(ng-if="table.showHdds")
+    span(ng-repeat="hdd in row.hdd_counts track by hdd.value")
+      span(ng-if="hdd.key > 1", ng-bind="hdd.key+'x '")
+      span(ng-bind="hdd.value + ($last ? '' : ',')")
+      br
+  td
+    .btn-group.btn-group-xs
+      a.btn.btn-default(
+        ui-sref="app.hardware.server.view.manage({id: row.id})"
+        translate="app.action.MANAGE"
+      )

@@ -8,6 +8,10 @@ var
   PluginError = $.util.PluginError,
   del = require('del');
 
+var Q = require('q');
+var _ = require('lodash');
+var streamToPromise = require('stream-to-promise');
+
 // production mode (see build task)
 var isProduction = false;
 // styles sourcemaps
@@ -156,9 +160,7 @@ gulp.task('vendor:base', function () {
     .pipe($.expectFile(vendor.base.source))
     .pipe(jsFilter)
     .pipe($.concat(vendor.base.js))
-    .pipe($.if(isProduction, $.uglify({
-      preserveComments: 'none',
-    })))
+    //TODO (breaks) .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
     .pipe(gulp.dest(build.scripts))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
@@ -171,7 +173,7 @@ gulp.task('vendor:base', function () {
     }));
 });
 
-// copy file from bower folder into the app vendor folder
+// copy files from vendor folder into the app vendor folder
 gulp.task('vendor:app', function () {
   log('Copying vendor assets..');
   var jsFilter = filter.js();
@@ -196,25 +198,42 @@ gulp.task('vendor:app', function () {
 
 });
 
-gulp.task('vendor:exports', function () {
+gulp.task('vendor:exports', function (done) {
   log('Copying vendor exports..');
-  var exported = require('./exports');
-  var tasks = [];
-  var exp;
+  var Exports = require('./exports');
 
-  for (var i in exported) {
-    exp = exported[i];
-    var jsFilter = filter.js();
-    var cssFilter = filter.css();
+  Q.all(
+    _.map(Exports, resolve)
+  ).then(done.bind(done, null), done);
 
-    tasks.push(
-      gulp
-        .src(exp.files, {
-          cwd: exp.basedir,
-          base: exp.basedir,
-          follow: true,
-        })
-        .pipe($.expectFile(exp.files))
+  function resolve(Export) {
+    return Export
+      .all()
+      .then(makeTasks)
+      ;
+
+
+    function makeTasks(exported) {
+      return Q.all(
+        _(exported)
+          .map(makeTask)
+          .map(streamToPromise)
+          .value()
+      );
+    }
+
+    function makeTask(exp) {
+      var jsFilter = filter.js();
+      var cssFilter = filter.css();
+      var opts = {
+        cwd: exp.dirname,
+        base: exp.dirname,
+        follow: true,
+      };
+
+      return gulp
+        .src(exp.files, opts)
+        .pipe($.expectFile(opts, exp.files))
         .pipe($.rename(addPrefixFolder.bind(null, exp.name)))
         .pipe(jsFilter)
         .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
@@ -226,10 +245,9 @@ gulp.task('vendor:exports', function () {
         .pipe(reload({
           stream: true
         }))
-    );
+        ;
+    }
   }
-
-  return $.merge.apply($.merge, tasks);
 });
 
 function addPrefixFolder (folder, file) {

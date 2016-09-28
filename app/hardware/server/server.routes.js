@@ -9,7 +9,7 @@
   /**
    * @ngInject
    */
-  function routeConfig($urlRouterProvider, $stateProvider, RouteHelpersProvider) {
+  function routeConfig($urlRouterProvider, $stateProvider, RouteHelpersProvider, SsoUrlProvider) {
     var helper = RouteHelpersProvider;
     $urlRouterProvider.otherwise('/hardware/server');
 
@@ -18,18 +18,12 @@
         url: '/server',
         abstract: true,
         template: helper.dummyTemplate,
-      })
-      .state('app.hardware.server.list', {
-        url: '?client',
-        title: 'Servers',
-        controller: 'ServerIndexCtrl as vm',
-        templateUrl: helper.basepath('hardware/server/server.index.html'),
+        resolve: helper.resolveFor('lang:server'),
       })
       .state('app.hardware.server.view', {
         url: '/:id',
         abstract: true,
         template: helper.dummyTemplate,
-        resolve: helper.resolveFor('lang:pxe', 'lang:bandwidth'),
       })
       .state('app.hardware.server.view.manage', {
         url: '?bandwidth.start&bandwidth.end',
@@ -40,9 +34,13 @@
         resolve: helper.resolveFor(
           'chart-js', 'after:ng-chart-js',
           'moment', 'after:date-range-picker',
+          'lang:os-reload', 'lang:bandwidth',
           'numeral'
         ),
       })
       ;
+    SsoUrlProvider.map('server', function (options) {
+      return '/hardware/server/'+options.id;
+    });
   }
 })();
