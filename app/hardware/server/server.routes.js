@@ -9,7 +9,7 @@
   /**
    * @ngInject
    */
-  function routeConfig($urlRouterProvider, $stateProvider, RouteHelpersProvider) {
+  function routeConfig($urlRouterProvider, $stateProvider, RouteHelpersProvider, SsoUrlProvider) {
     var helper = RouteHelpersProvider;
     $urlRouterProvider.otherwise('/hardware/server');
 
@@ -39,5 +39,8 @@
         ),
       })
       ;
+    SsoUrlProvider.map('server', function (options) {
+      return '/hardware/server/'+options.id;
+    });
   }
 })();
