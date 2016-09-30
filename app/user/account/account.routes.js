@@ -14,7 +14,7 @@
         template: helper.dummyTemplate,
         resolve: helper.resolveFor('lang:account'),
       })
-      .state('app.user.account.index', {
+      .state('app.user.account.settings', {
         url: '',
         title: 'Account',
         templateUrl: helper.basepath('user/account/account.html'),

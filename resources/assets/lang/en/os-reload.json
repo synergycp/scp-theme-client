@@ -20,7 +20,7 @@
   },
   "server": {
     "TITLE": "Operating System Reload",
-    "NOT_ENABLED": "This server must have a MAC address and be assigned an IP Entity to use OS Reload.",
+    "NOT_ENABLED": "This server is not ready for Operating System Reloads.",
     "SUBMIT": "Reload Operating System",
     "profile": {
       "LABEL": "Profile",
