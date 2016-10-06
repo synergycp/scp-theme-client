@@ -9,11 +9,11 @@
   /**
    * @ngInject
    */
-  function routeConfig($urlRouterProvider, $stateProvider, RouteHelpersProvider, SsoUrlProvider) {
+  function routeConfig($urlRouterProvider, RouteHelpersProvider) {
     var helper = RouteHelpersProvider;
     $urlRouterProvider.otherwise('/hardware/server');
 
-    $stateProvider
+    helper
       .state('app.hardware.server', {
         url: '/server',
         abstract: true,
@@ -39,8 +39,13 @@
         ),
       })
       ;
-    SsoUrlProvider.map('server', function (options) {
-      return '/hardware/server/'+options.id;
-    });
+    helper.sso
+      .map('server', function ($state, options) {
+        return $state.href(
+          'app.hardware.server.'+(options.id ? 'view' : 'list'), {
+          id: options.id,
+        });
+      })
+      ;
   }
 })();
