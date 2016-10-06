@@ -65,6 +65,7 @@
 
       $scope.$evalAsync(function() {
         _.assign(vm.server, response);
+        vm.server.patch = patchServer;
 
         defer.resolve(vm.server);
       });
@@ -103,6 +104,7 @@
     function patchServer() {
       return $api.patch
         .apply($api, arguments)
+        .then(storeServer)
         .then(fireChangeEvent)
         ;
     }
