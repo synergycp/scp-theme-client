@@ -9,7 +9,7 @@
     }
   },
   "search": {
-    "TITLE": "Clients",
+    "TITLE": "Sub Clients",
     "SERVERS": "{{ servers }} Server{{ servers === '1' ? '' : 's' }}"
   }
 }

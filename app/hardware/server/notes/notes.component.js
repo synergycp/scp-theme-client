@@ -43,7 +43,7 @@
       };
 
       return notes.loader.during(
-          notes.server.patch(data)
+        notes.server.patch(data)
       );
     }
   }

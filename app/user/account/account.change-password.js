@@ -18,7 +18,7 @@
   /**
    * @ngInject
    */
-  function ChangePasswordCtrl(Auth) {
+  function ChangePasswordCtrl(Auth, Alert) {
     var changePassword = this;
 
     changePassword.$onInit = init;
@@ -34,6 +34,16 @@
     }
 
     function submit() {
+      if (!changePassword.input.password) {
+        Alert.warning('Please input a password to set.');
+        return;
+      }
+
+      if (changePassword.input.password != changePassword.input.confirm) {
+        Alert.warning('Passwords do not match.');
+        return;
+      }
+
       Auth.user().patch({
         password: changePassword.input.password,
       });
