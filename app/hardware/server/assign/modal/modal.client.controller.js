@@ -44,6 +44,16 @@
       value: MODE.SEARCH,
     }, MODE);
     modal.create = {};
+    modal.allowedAccess = {
+      pxe: false,
+      ipmi: false,
+      switch: false,
+    };
+    _.each(modal.servers, function (server) {
+      modal.allowedAccess.pxe |= server.access.pxe;
+      modal.allowedAccess.ipmi |= server.access.ipmi;
+      modal.allowedAccess.switch |= server.access.switch;
+    });
 
     activate();
 
