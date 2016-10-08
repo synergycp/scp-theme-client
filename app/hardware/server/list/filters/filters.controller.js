@@ -9,15 +9,13 @@
   /**
    * @ngInject
    */
-  function ServerFiltersCtrl(Select, Observable, $state, $q, $timeout) {
+  function ServerFiltersCtrl(Select, Observable, $q, $timeout) {
     var filters = this;
 
     filters.$onInit = init;
     filters.$onChanges = $onChanges;
 
-    filters.current = {
-      q: $state.params.q,
-    };
+    filters.current = {};
     // filters.group = Select('group');
     filters.searchFocus = Observable(false);
 
@@ -44,11 +42,6 @@
     function fireChangeEvent() {
       _.assign(filters.current, {
         // group: filters.group.getSelected('id'),
-      });
-
-      $state.go($state.current.name, {
-        // 'group': filters.current.group,
-        'q': filters.current.q,
       });
 
       if (filters.change) {

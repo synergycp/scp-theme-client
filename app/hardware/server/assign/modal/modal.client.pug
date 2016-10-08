@@ -42,8 +42,10 @@ form(ng-submit="modal.submit()")
       form="modal.create"
     )
 
-    +label("{{ 'hardware.server.modal.client.access.LABEL' | translate }}")
-      .checkbox
+    +label("{{ 'hardware.server.modal.client.access.LABEL' | translate }}")(
+      ng-if="modal.allowedAccess.pxe || modal.allowedAccess.ipmi || modal.allowedAccess.switch"
+    )
+      .checkbox(ng-if="modal.allowedAccess.pxe")
         label
           input(
             type="checkbox"
@@ -51,7 +53,7 @@ form(ng-submit="modal.submit()")
           )
           span(translate="hardware.server.modal.client.access.PXE")
 
-      .checkbox
+      .checkbox(ng-if="modal.allowedAccess.ipmi")
         label
           input(
             type="checkbox"
@@ -59,7 +61,7 @@ form(ng-submit="modal.submit()")
           )
           span(translate="hardware.server.modal.client.access.IPMI")
 
-      .checkbox
+      .checkbox(ng-if="modal.allowedAccess.switch")
         label
           input(
             type="checkbox"
