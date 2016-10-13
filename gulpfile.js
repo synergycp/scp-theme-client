@@ -217,12 +217,17 @@ gulp.task('vendor:exports', function (done) {
       return Q.all(
         _(exported)
           .map(makeTask)
+          .filter()
           .map(streamToPromise)
           .value()
       );
     }
 
     function makeTask(exp) {
+      if (!exp.files) {
+        return;
+      }
+
       var jsFilter = filter.js();
       var cssFilter = filter.css();
       var opts = {
