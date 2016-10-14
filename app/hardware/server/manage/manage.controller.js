@@ -89,13 +89,13 @@
         context: panelContext,
       },]);
 
-      _.setContents(vm.panels.right, _.filter([vm.server.access.switch && {
+      _.setContents(vm.panels.right, _.filter([vm.server.access.now.switch && {
         templateUrl: PANELS+'/panel.control.switch.html',
         context: panelContext,
-      }, vm.server.access.ipmi && {
+      }, vm.server.access.now.ipmi && {
         templateUrl: PANELS+'/panel.control.ipmi.html',
         context: panelContext,
-      }, vm.server.access.pxe && {
+      }, vm.server.access.now.pxe && {
         templateUrl: PANELS+'/panel.os-reload.html',
         context: panelContext,
       },]));
