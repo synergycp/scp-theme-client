@@ -89,16 +89,18 @@
         context: panelContext,
       },]);
 
-      _.setContents(vm.panels.right, _.filter([vm.server.access.now.switch && {
-        templateUrl: PANELS+'/panel.control.switch.html',
-        context: panelContext,
-      }, vm.server.access.now.ipmi && {
-        templateUrl: PANELS+'/panel.control.ipmi.html',
-        context: panelContext,
-      }, vm.server.access.now.pxe && {
-        templateUrl: PANELS+'/panel.os-reload.html',
-        context: panelContext,
-      },]));
+      if (vm.server.access.is_active) {
+        _.setContents(vm.panels.right, _.filter([vm.server.access.switch && {
+          templateUrl: PANELS+'/panel.control.switch.html',
+          context: panelContext,
+        }, vm.server.access.ipmi && {
+          templateUrl: PANELS+'/panel.control.ipmi.html',
+          context: panelContext,
+        }, vm.server.access.pxe && {
+          templateUrl: PANELS+'/panel.os-reload.html',
+          context: panelContext,
+        },]));
+      }
     }
 
     function patchServer() {
