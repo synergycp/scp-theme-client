@@ -2,14 +2,14 @@ doctype html
 include /resources/angle/pug/mixins/form
 
 +field(
-  "{{ 'user.client.form.email.LABEL' | translate }}",
+  "{{ 'client.form.email.LABEL' | translate }}",
   "email"
 )(
   ng-model="clientForm.input.email"
 )
 
 +double-field(
-  "{{ 'user.client.form.name.LABEL' | translate }}",
+  "{{ 'client.form.name.LABEL' | translate }}",
   "name", {
     "ng-model": "clientForm.input.first"
   }, {
