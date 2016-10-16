@@ -15,48 +15,5 @@
       "EMAIL": "E-Mail Address",
       "SIGNUP": "Signup Date"
     }
-  },
-  "client": {
-    "modal": {
-      "delete": {
-        "TITLE": "Delete Clients",
-        "SUBMIT": "Delete",
-        "CANCEL": "Cancel",
-        "BODY": "Click \"Delete\" to permanently delete these Clients:"
-      }
-    },
-    "search": {
-      "TITLE": "Clients"
-    },
-    "list": {
-      "NO-SERVERS": "-",
-      "TITLE": "Sub Clients",
-      "EMPTY": "No Sub Clients found. You can create one below, which will allow you to add that client to any of your servers."
-    },
-    "heading": {
-      "NAME": "Name",
-      "EMAIL": "E-Mail Address",
-      "SERVER-COUNT": "Servers",
-      "ACTIONS": "Actions"
-    },
-    "form": {
-      "title": {
-        "ADD": "Create Client",
-        "EDIT": "Edit {{ email }}"
-      },
-      "email": {
-        "LABEL": "Email"
-      },
-      "password": {
-        "LABEL": "Password",
-        "PLACEHOLDER": "Enter a password to set"
-      },
-      "billing_id": {
-        "LABEL": "Billing ID"
-      },
-      "name": {
-        "LABEL": "Name"
-      }
-    }
   }
 }
