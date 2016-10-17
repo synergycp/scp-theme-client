@@ -7,6 +7,8 @@
       "TITLE": "Server Assignments",
       "ITEM": "Item",
       "ASSIGNED": "Assigned To",
+      "NICKNAME": "Nickname",
+      "SRV_ID": "Server ID",
       "client": {
         "TITLE": "Sub Client",
         "NONE": "Unassigned",

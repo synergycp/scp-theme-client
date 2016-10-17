@@ -30,8 +30,15 @@
     assign.client = {
       modal: assignClientModal,
     };
+    assign.saveNickname = saveNickname;
 
     //////////
+
+    function saveNickname() {
+      return assign.server.patch({
+        nickname: assign.server.nickname,
+      });
+    }
 
     function init() {
       assign.entities.load();
