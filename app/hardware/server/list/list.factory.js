@@ -14,13 +14,10 @@
     _,
     List,
     ListConfirm,
-    ServerAssign,
-    $stateParams
+    ServerAssign
   ) {
     return function () {
-      var list = List('server').filter({
-        client: $stateParams.client,
-      });
+      var list = List('server');
 
       list.bulk.add('Assign Client', handler(ServerAssign.client));
       list.bulk.add('Suspend', handler(ServerAssign.suspend));

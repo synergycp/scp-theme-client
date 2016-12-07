@@ -1,15 +1,34 @@
 {
   "list": {
     "TITLE": "Sub Clients",
+    "NO-SERVERS": "-",
+    "EMPTY": "No Sub Clients found. You can create one below, which will allow you to add that client to any of your servers.",
     "filter": {
       "search": {
         "LABEL": "Search",
         "PLACEHOLDER": "Type to search..."
       }
+    },
+    "heading": {
+      "NAME": "Name",
+      "EMAIL": "E-Mail Address",
+      "SERVER-COUNT": "Servers",
+      "ACTIONS": "Actions"
     }
   },
   "search": {
     "TITLE": "Sub Clients",
     "SERVERS": "{{ servers }} Server{{ servers === '1' ? '' : 's' }}"
+  },
+  "form": {
+    "title": {
+      "ADD": "Create Sub Client"
+    },
+    "email": {
+      "LABEL": "Email"
+    },
+    "name": {
+      "LABEL": "Name"
+    }
   }
 }

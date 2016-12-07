@@ -14,15 +14,15 @@
   function ServerBandwidthPortFactory (
     $q,
     date,
+    $state,
     BandwidthChart,
-    BandwidthFilter,
     ServerBandwidthBilling
   ) {
     return function (server, port, filter) {
         return new ServerBandwidthPort(
           server,
           port,
-          filter || BandwidthFilter(),
+          filter,
           ServerBandwidthBilling(),
           BandwidthChart(),
           date,
@@ -52,7 +52,9 @@
       bandwidth.filter.end = moment("2016-06-27 14:30");
       */
 
-      return bandwidth.chart.refresh();
+      if (bandwidth.filter.start) {
+        refresh();
+      }
     }
 
     function refresh() {
