@@ -20,6 +20,12 @@
     }).item({
       text: "Sub Clients",
       sref: "app.user.client.list",
+    }).item({
+      text: "Super Clients",
+      sref: "app.user.client.super.list",
+      params: {
+        client: 1
+      }
     });
   }
 })();
