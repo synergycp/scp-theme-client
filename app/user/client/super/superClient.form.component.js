@@ -2,10 +2,15 @@
   'use strict';
 
   var INPUTS = {
+    email: '',
+    password: '',
+    first: '',
+    last: '',
+    billing_id: '',
   };
 
   angular
-    .module('app.user')
+    .module('app.user.client.super')
     .component('superClientForm', {
       require: {
       },
@@ -14,7 +19,7 @@
       },
       controller: 'SuperClientFormCtrl as superClientForm',
       transclude: true,
-      templateUrl: 'app/user/client/super/superClient.form.html',
+      templateUrl: 'app/user/client/client.form.html'
     })
     .controller('SuperClientFormCtrl', SuperClientFormCtrl)
     ;
@@ -22,34 +27,21 @@
   /**
    * @ngInject
    */
-  function SuperClientFormCtrl(Select) {
+  function SuperClientFormCtrl() {
     var superClientForm = this;
 
     superClientForm.$onInit = init;
-    superClientForm.input = _.clone(INPUTS);
-    superClientForm.client = Select('client');
 
     //////////
 
     function init() {
       superClientForm.form.getData = getData;
-      fillFormInputs();
-
-      (superClientForm.form.on || function() {})(['change', 'load'], fillFormInputs);
+      superClientForm.input = superClientForm.form.input = superClientForm.form.input || {};
+      _.assign(superClientForm.input, INPUTS);
     }
 
     function getData() {
-      var data = _.clone(superClientForm.input);
-      
-      data.client = {
-        id: superClientForm.client.getSelected('id'),
-      };
-
-      return data;
-    }
-
-    function fillFormInputs() {
-      _.overwrite(superClientForm.input, superClientForm.form.input);
+      return _.clone(superClientForm.input);
     }
   }
 })();
