@@ -19,7 +19,7 @@
       },
       controller: 'SuperClientFormCtrl as superClientForm',
       transclude: true,
-      templateUrl: 'app/user/client/client.form.html'
+      templateUrl: 'app/user/client/super/superClient.form.html'
     })
     .controller('SuperClientFormCtrl', SuperClientFormCtrl)
     ;
