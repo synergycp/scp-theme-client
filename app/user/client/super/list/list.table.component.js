@@ -33,8 +33,6 @@
     function init() {
       _.defaults(table, {
         showName: true,
-        showEmail: true,
-        showServerCount: true,
         showActions: true,
       });
     }
