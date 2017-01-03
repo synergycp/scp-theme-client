@@ -9,8 +9,6 @@
       },
       bindings: {
         showName: '=?',
-        showEmail: '=?',
-        showServerCount: '=?',
         showActions: '=?',
       },
       controller: 'SuperClientTableCtrl as table',

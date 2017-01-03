@@ -17,7 +17,7 @@
       var list = List('client/'+currentUserId+'/super');
       var clientList = List('client');
       
-      list.confirm = ListConfirm(list, 'client.modal.delete');
+      list.confirm = ListConfirm(list, 'client.super.modal.delete');
       list.bulk.add('Delete', list.confirm.delete);
 
       var createSuperClient = list.create;

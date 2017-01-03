@@ -3,10 +3,8 @@
 
   var INPUTS = {
     email: '',
-    password: '',
     first: '',
-    last: '',
-    billing_id: '',
+    last: ''
   };
 
   angular
