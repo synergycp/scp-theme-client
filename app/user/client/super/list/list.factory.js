@@ -11,7 +11,7 @@
    *
    * @ngInject
    */
-  function SuperClientListFactory (List, ListConfirm, ApiKey, $q) {
+  function SuperClientListFactory (List, ListConfirm, ApiKey) {
     return function () {
       var currentUserId = ApiKey.owner().id;
       var list = List('client/'+currentUserId+'/super');
@@ -22,19 +22,11 @@
 
       var createSuperClient = list.create;
       list.create = function(data) {
-        var deferred = $q.defer();
-        clientList.create(data).then(function(client) {
-          createSuperClient({
+        return clientList.create(data).then(function(client) {
+          return createSuperClient({
             client_id: client.id
-          }).then(function(res) {
-            deferred.resolve(res);
-          }).catch(function(err) {
-            deferred.reject(err);
           })
-        }).catch(function(err) {
-          deferred.reject(err);
         })
-        return deferred.promise;
       }
 
       return list;
