@@ -10,6 +10,5 @@ block columns
     ng-if="table.showName"
   )
     a(
-      ui-sref="app.user.client.super.view({ id: row.id })"
-      ng-bind="row.name"
+      ng-bind="row.grantee.name"
     )
