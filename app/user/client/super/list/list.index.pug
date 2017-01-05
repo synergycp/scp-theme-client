@@ -1,0 +1,27 @@
+extends /resources/angle/pug/list-page
+include /resources/angle/pug/mixins/list
+
+block list
+  list.panel.panel-default(list="vm.list")
+    list-header(text="client.super.list.TITLE")
+      a.btn.btn-default(ng-click="vm.list.refresh.now()")
+        i.fa.fa-refresh
+      a.btn.btn-default(ng-click="vm.filters.visible = !vm.filters.visible")
+        i.fa.fa-filter
+    super-client-filters(
+      show="vm.filters.visible"
+      current="vm.filters.current"
+      change="vm.filters.change()"
+    )
+    super-client-table.border-top-table
+    list-footer
+
+block bottom-left
+  +create-form("{{ 'client.super.form.title.ADD' | translate }}")
+    super-client-form(form="vm.create")
+
+block bottom-right
+  logs(
+    title="Client Logs"
+    filter="vm.logs.filter"
+  )

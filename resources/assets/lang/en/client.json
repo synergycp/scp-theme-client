@@ -30,5 +30,40 @@
     "name": {
       "LABEL": "Name"
     }
+  },
+  "super": {
+    "list": {
+      "TITLE": "Super Clients",
+      "EMPTY": "No Super Clients found. You can create one below.",
+      "filter": {
+        "search": {
+          "LABEL": "Search",
+          "PLACEHOLDER": "Type to search..."
+        }
+      },
+      "heading": {
+        "NAME": "Name",
+        "ACTIONS": "Actions"
+      }
+    },
+    "form": {
+      "title": {
+        "ADD": "Create Super Client"
+      },
+      "email": {
+        "LABEL": "Email"
+      },
+      "name": {
+        "LABEL": "Name"
+      }
+    },
+    "modal": {
+      "delete": {
+        "TITLE": "Delete Super Clients",
+        "SUBMIT": "Delete",
+        "CANCEL": "Cancel",
+        "BODY": "Click \"Delete\" to permanently delete these Super Clients:"
+      }
+    }
   }
 }
