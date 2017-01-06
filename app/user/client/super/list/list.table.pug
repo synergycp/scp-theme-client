@@ -4,6 +4,8 @@ block headings
   th.sortable(ng-if="table.showName")
     span(translate="client.super.list.heading.NAME")
     sort(col="last")
+  th
+    span(translate="client.super.list.heading.ACTIONS")
 
 block columns
   td(
@@ -12,3 +14,9 @@ block columns
     span(
       ng-bind="row.grantee.name"
     )
+  td
+    .btn-group.btn-group-xs
+      a.btn.btn-default(
+      	ng-click="table.list.list.confirm.delete([row])"
+        translate="app.action.DELETE"
+      )
