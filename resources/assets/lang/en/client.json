@@ -55,6 +55,9 @@
       },
       "name": {
         "LABEL": "Name"
+      },
+      "acknowledged": {
+        "LABEL": "I acknowledge that this email account will have full access to all of my servers"
       }
     },
     "modal": {
