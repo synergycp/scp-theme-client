@@ -22,5 +22,11 @@
       heading: "true",
       translate: "app.nav.heading.HEADER"
     });
+    NavProvider.group('dashboard', {
+      translate: "nav.DASH",
+      sref: "app.hardware.server.list",
+      icon: "fa fa-home",
+      order: 0
+    });
   }
 })();
