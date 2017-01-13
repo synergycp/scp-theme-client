@@ -15,7 +15,8 @@
       "TITLE": "Cancel Operating System Reload?",
       "BODY": "This will stop tracking the installation, but will not stop it from continuing.",
       "CANCEL": "Cancel",
-      "SUBMIT": "Stop Tracking"
+      "SUBMIT": "Stop Tracking",
+      "RESTART": "Restart Installation"
     }
   },
   "server": {
@@ -28,7 +29,9 @@
     },
     "raid": {
       "LABEL": "RAID",
-      "PLACEHOLDER": "Type to Search..."
+      "NONE": "None",
+      "ZERO": "0",
+      "ONE": "1"
     },
     "license-key": {
       "LABEL": "License Key",

@@ -108,9 +108,9 @@
   "switch": {
     "TITLE": "Switch Controls",
     "NOT_ENABLED": "This server is not ready for switch controls.",
-    "NAME": "Switch Name",
     "SPEED": "Port Speed",
     "PORT": "Port Number",
+    "MAC": "MAC Address",
     "power": {
       "BTN": "Port Power",
       "on": {
