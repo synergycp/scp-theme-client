@@ -1,0 +1,14 @@
+extends /resources/angle/pug/table-checkable
+
+block headings
+  th.sortable(ng-if="table.showName")
+    span(translate="client.super.list.heading.NAME")
+    sort(col="last")
+
+block columns
+  td(
+    ng-if="table.showName"
+  )
+    a(
+      ng-bind="row.grantee.name"
+    )
