@@ -16,3 +16,8 @@ include /resources/angle/pug/mixins/form
     "ng-model": "superClientForm.input.last"
   }
 )
+
++checkbox("{{ 'client.super.form.acknowledged.LABEL' | translate }}")(
+    ng-model="superClientForm.input.acknowledged"
+  )
+

@@ -4,7 +4,8 @@
   var INPUTS = {
     email: '',
     first: '',
-    last: ''
+    last: '',
+    acknowledged: false
   };
 
   angular

@@ -32,7 +32,11 @@
     ////////////
 
     function activate() {
-      vm.list.load();
+      vm.list.on('load', function(items) {
+        _(items).forEach(function(item) {
+          item.name = item.grantee.name;
+        })
+      })
     }
 
     function create() {
