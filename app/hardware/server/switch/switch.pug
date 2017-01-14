@@ -2,6 +2,7 @@ include /resources/angle/pug/mixins/panel
 
 div(
   ng-class="switchControl.loader.class"
+  ng-if="switchControl.ports.length"
 )
   .loader
   uib-tabset(
@@ -23,14 +24,3 @@ div(
           server="switchControl.server"
           port="port"
         )
-
-  .panel.panel-default(
-    ng-if="!switchControl.ports.length"
-  )
-    .panel-body.text-center
-      p(translate="server.switch.NOT_ENABLED")
-      a.btn.btn-primary(
-        translate="server.EDIT"
-        ui-sref="app.hardware.server.view.edit({ id: switchControl.server.id })"
-      )
-
