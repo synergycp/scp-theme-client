@@ -11,7 +11,3 @@ include /resources/angle/pug/mixins/panel
       tr(ng-repeat="item in hardware.items")
         td(translate="{{item.trans}}")
         td(ng-bind="item.name")
-
-      tr
-        td(translate="hardware.server.hardware.MAC")
-        td(ng-bind="hardware.server.mac")
