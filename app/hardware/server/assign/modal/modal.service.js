@@ -48,8 +48,10 @@
             .all('access')
             .one(''+server.access.sub.id);
 
-          return $access.patch({ is_active: false })
-            .then(saveAccessResponse.bind(null, server));
+          return $access
+            .patch({ is_active: false })
+            .then(saveAccessResponse.bind(null, server))
+            ;
         }
       }
     }
