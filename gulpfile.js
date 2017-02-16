@@ -186,7 +186,7 @@ gulp.task('vendor:app', function () {
     })
     .pipe($.expectFile(vendor.app.source))
     .pipe(jsFilter)
-    .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
+    // .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.if(isProduction, $.cssnano(cssnanoOpts)))
@@ -241,7 +241,7 @@ gulp.task('vendor:exports', function (done) {
         .pipe($.expectFile(opts, exp.files))
         .pipe($.rename(addPrefixFolder.bind(null, exp.name)))
         .pipe(jsFilter)
-        .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
+        // .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
         .pipe($.if(isProduction, $.cssnano(cssnanoOpts)))
@@ -318,7 +318,7 @@ gulp.task('browsersync', function () {
     server: {
       baseDir: 'public/',
     },
-    port: 8081,
+    port: 8002,
   });
 
 });

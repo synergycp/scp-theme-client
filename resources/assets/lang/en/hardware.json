@@ -36,7 +36,6 @@
       "ITEM": "Hardware Item",
       "VALUE": "Value",
       "BILLING": "Billing ID",
-      "MAC": "MAC Address",
       "CPU": "Processor",
       "MEM": "Memory",
       "DISK": "Disk",
