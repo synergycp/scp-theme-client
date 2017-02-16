@@ -51,10 +51,10 @@
 
     //////////
 
-    function onSelect($item) {
-      $state.go('app.hardware.server.list', {
-        client: $item.id,
-      });
+    function onSelect($item, shouldOpenInNewTab, openSelected) {
+      openSelected('app.hardware.server.list', {
+          id: $item.id,
+        }, shouldOpenInNewTab);
     }
   }
 })();
