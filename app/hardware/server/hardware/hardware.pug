@@ -1,11 +1,11 @@
 include /resources/angle/pug/mixins/panel
 
-+panel("{{ 'hardware.server.hardware.TITLE' | translate }}")
++panel("{{ 'server.hardware.TITLE' | translate }}")
   table.table
     thead
       tr
-        th(translate="hardware.server.hardware.ITEM")
-        th(translate="hardware.server.hardware.VALUE")
+        th(translate="server.hardware.ITEM")
+        th(translate="server.hardware.VALUE")
 
     tbody
       tr(ng-repeat="item in hardware.items")

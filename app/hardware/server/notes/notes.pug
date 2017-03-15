@@ -9,12 +9,12 @@ form.panel.panel-default(
     .btn-group.btn-group-xs.pull-right
       a.btn.btn-default
         span.fa(ng-class="notes.isExpanded ? 'fa-minus' : 'fa-plus'")
-    h3.panel-title(translate="hardware.server.notes.TITLE")
+    h3.panel-title(translate="server.notes.TITLE")
   .panel-body(ng-class="notes.isExpanded ? '' : 'hidden'")
     .form-group
       label.control-label(
         for="form-client-notes"
-        translate="hardware.server.notes.CLIENT"
+        translate="server.notes.CLIENT"
       )
       textarea.form-control(
         ng-model="notes.server.notes.client"
@@ -23,4 +23,4 @@ form.panel.panel-default(
 
   .panel-footer.clearfix(ng-class="notes.isExpanded ? '' : 'hidden'")
     .pull-right
-      button.btn.btn-primary(translate="hardware.server.notes.SUBMIT")
+      button.btn.btn-primary(translate="server.notes.SUBMIT")

@@ -1,12 +1,15 @@
 var
   path = require('path'),
   gulp = require('gulp'),
+  ngGulp = require('scp-ng-gulp')(require('gulp'))
   $ = require('gulp-load-plugins')(),
   gulpsync = $.sync(gulp),
   browserSync = require('browser-sync').create(),
   reload = browserSync.reload,
   PluginError = $.util.PluginError,
   del = require('del');
+
+var createVersions = ngGulp.require('create-versions')();
 
 var Q = require('q');
 var _ = require('lodash');
@@ -340,6 +343,8 @@ gulp.task('clean', function (done) {
   }, done);
 });
 
+gulp.task('create-versions', createVersions);
+
 //---------------
 // MAIN TASKS
 //---------------
@@ -349,7 +354,9 @@ gulp.task('build', gulpsync.sync([
   'prod',
   'vendor',
   'assets'
-]));
+]), function () {
+  if (isProduction) gulp.start('create-versions');
+});
 
 gulp.task('prod', function () {
   log('Starting production build...');
@@ -359,6 +366,7 @@ gulp.task('prod', function () {
 // Server for development
 gulp.task('serve', gulpsync.sync([
   'default',
+  'create-versions',
   'browsersync'
 ]), done);
 

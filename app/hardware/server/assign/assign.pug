@@ -1,26 +1,26 @@
 include /resources/angle/pug/mixins/panel
 
-+panel("{{ 'hardware.server.assign.TITLE' | translate }}")
++panel("{{ 'server.assign.TITLE' | translate }}")
   table.table
     thead
       tr
-        th(translate="hardware.server.assign.ITEM")
-        th(translate="hardware.server.assign.ASSIGNED")
+        th(translate="server.assign.ITEM")
+        th(translate="server.assign.ASSIGNED")
 
     tbody
       tr
-        th.shrink.v-mid(translate="hardware.server.assign.NICKNAME")
+        th.shrink.v-mid(translate="server.assign.NICKNAME")
         td
           editable(
             value="assign.server.nickname"
             on-save="assign.saveNickname()"
           )
       tr
-        th.shrink.v-mid(translate="hardware.server.assign.SRV_ID")
+        th.shrink.v-mid(translate="server.assign.SRV_ID")
         td(ng-bind="assign.server.srv_id")
 
       tr
-        th.shrink.v-mid(translate="hardware.server.assign.client.TITLE")
+        th.shrink.v-mid(translate="server.assign.client.TITLE")
         td(ng-init="access = assign.server.access")
           a(
             ng-if="access.sub"
@@ -29,12 +29,12 @@ include /resources/angle/pug/mixins/panel
           )
           span(
             ng-if="!access.sub"
-            translate="hardware.server.assign.client.NONE"
+            translate="server.assign.client.NONE"
           )
           span  (
           a(
             ng-click="assign.client.modal()"
-            translate="hardware.server.assign.client.{{ access.sub ? 'REASSIGN' : 'ASSIGN' }}"
+            translate="server.assign.client.{{ access.sub ? 'REASSIGN' : 'ASSIGN' }}"
           )
           span )
       tr(ng-if="assign.entities.items.length")
@@ -42,32 +42,32 @@ include /resources/angle/pug/mixins/panel
 
       //- Start Entities
       tr(ng-repeat-start="entity in assign.entities.items")
-        th.shrink.v-mid(translate="hardware.server.assign.entity.TITLE")
+        th.shrink.v-mid(translate="server.assign.entity.TITLE")
         td(ng-bind="entity.nickname")
 
       //- Start IPv4
       tr(ng-if-start="entity.v4")
         td.shrink
-          span(translate="hardware.server.assign.entity.v4.USABLE")
+          span(translate="server.assign.entity.v4.USABLE")
         td(ng-bind="entity.v4.full")
       tr
         td.shrink
-          span(translate="hardware.server.assign.entity.v4.GATEWAY")
+          span(translate="server.assign.entity.v4.GATEWAY")
         td(ng-bind="entity.v4.gateway")
       tr(ng-if-end)
         td.shrink
-          span(translate="hardware.server.assign.entity.v4.SUBNET")
+          span(translate="server.assign.entity.v4.SUBNET")
         td(ng-bind="entity.v4.subnet_mask")
       //- End IPv4
 
       //- Start IPv6
       tr(ng-if-start="entity.v6")
         td.shrink
-          span(translate="hardware.server.assign.entity.v6.ADDRESS")
+          span(translate="server.assign.entity.v6.ADDRESS")
         td(ng-bind="entity.v6.address")
       tr(ng-if-end, ng-repeat-end)
         td.shrink
-          span(translate="hardware.server.assign.entity.v6.GATEWAY")
+          span(translate="server.assign.entity.v6.GATEWAY")
         td(ng-bind="entity.v6.gateway")
       //- End IPv6
       //- End Entities
