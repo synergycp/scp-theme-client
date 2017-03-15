@@ -13,7 +13,6 @@
         url: '/hardware',
         abstract: true,
         template: helper.dummyTemplate,
-        resolve: helper.resolveFor('lang:hardware'),
       })
       ;
   }
