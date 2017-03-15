@@ -1,15 +1,55 @@
 {
-  "list": {
-    "TITLE": "Servers",
-    "filter": {
-      "search": {
-        "LABEL": "Search",
-        "PLACEHOLDER": "Type to search..."
+  "EDIT": "Edit",
+  "SUSPEND": "Suspend",
+  "UNSUSPEND": "Activate",
+  "assign": {
+    "TITLE": "Server Assignments",
+    "ITEM": "Item",
+    "ASSIGNED": "Assigned To",
+    "NICKNAME": "Nickname",
+    "SRV_ID": "Server ID",
+    "client": {
+      "TITLE": "Sub Client",
+      "NONE": "Unassigned",
+      "REASSIGN": "Reassign",
+      "ASSIGN": "Assign"
+    },
+    "entity": {
+      "TITLE": "IP Allocation",
+      "v4": {
+        "USABLE": " - Usable IP(s)",
+        "GATEWAY": " - Gateway IP",
+        "SUBNET": " - Subnet Mask"
+      },
+      "v6": {
+        "ADDRESS": " - IPv6 Address",
+        "GATEWAY": " - IPv6 Gateway"
       }
     }
   },
-  "table-action": {
-    "MANAGE": "manage"
+  "bandwidth": {
+    "TITLE": "Bandwidth"
+  },
+  "hardware": {
+    "TITLE": "Server Hardware",
+    "ITEM": "Hardware Item",
+    "VALUE": "Value",
+    "BILLING": "Billing ID",
+    "CPU": "Processor",
+    "MEM": "Memory",
+    "DISK": "Disk",
+    "ADD-ON": "Add-On",
+    "NA": "N/A"
+  },
+  "heading": {
+    "NICKNAME": "Nickname",
+    "IP": "Server IP",
+    "CLIENT": "Sub Client",
+    "STATUS": "Status",
+    "CPU": "CPU",
+    "HDDS": "Hard Drives",
+    "RAM": "RAM",
+    "SRV_ID": "Server ID"
   },
   "ipmi": {
     "TITLE": "IPMI Controls",
@@ -105,6 +145,108 @@
       }
     }
   },
+  "list": {
+    "TITLE": "Servers",
+    "filter": {
+      "search": {
+        "LABEL": "Search",
+        "PLACEHOLDER": "Type to search..."
+      }
+    }
+  },
+  "modal": {
+    "servers": {
+      "LABEL": "Servers"
+    },
+    "client": {
+      "TITLE": "Assign Client",
+      "SUBMIT": "Assign",
+      "CANCEL": "Cancel",
+      "mode": {
+        "ADD": "Create Client",
+        "SEARCH": "Search Clients"
+      },
+      "client": {
+        "LABEL": "Client",
+        "PLACEHOLDER": "Type to search..."
+      },
+      "access": {
+        "LABEL": "Access",
+        "PXE": "PXE Controls",
+        "IPMI": "IPMI Controls",
+        "SWITCH": "Switch Controls"
+      }
+    },
+    "delete": {
+      "TITLE": "Delete Server",
+      "SUBMIT": "Delete",
+      "CANCEL": "Cancel",
+      "BODY": "Click \"Delete\" to permanently delete these servers:"
+    },
+    "suspend": {
+      "TITLE": "Suspend Server",
+      "SUBMIT": "Suspend",
+      "CANCEL": "Cancel",
+      "BODY": "Suspending a server does the following:",
+      "ACTIONS": [
+        "Turn off server's switch port",
+        "Disable all client controls"
+      ],
+      "ACTION_COUNT": "2",
+      "CONFIRM": "Click \"Suspend\" to suspend these servers:"
+    },
+    "wipe": {
+      "TITLE": "Wipe Server",
+      "SUBMIT": "Wipe",
+      "CANCEL": "Cancel",
+      "BODY": "This action is irreversible. Wiping a server does the following:",
+      "ACTIONS": [
+        "Unsassign all IP entities",
+        "Unassign client",
+        "Set nickname to EMPTY",
+        "Remove IPMI user",
+        "Turn server off via IPMI",
+        "Turn off server's switch port"
+      ],
+      "ACTION_COUNT": "6",
+      "CONFIRM": "Click \"Wipe\" to wipe these servers:"
+    }
+  },
+  "notes": {
+    "TITLE": "Server Notes",
+    "CLIENT": "Client Notes",
+    "ADMIN": "Administrator Notes",
+    "SUBMIT": "Save Notes"
+  },
+  "provision": {
+    "TITLE": "Provision Server",
+    "SUBMIT": "Provision",
+    "server": {
+      "LABEL": "Server",
+      "PLACEHOLDER": "Type to search..."
+    },
+    "profile": {
+      "LABEL": "Operating System",
+      "PLACEHOLDER": "Type to search..."
+    },
+    "edition": {
+      "LABEL": "Edition",
+      "PLACEHOLDER": "Type to search..."
+    },
+    "license_key": {
+      "LABEL": "License Key",
+      "PLACEHOLDER": "Optional",
+      "HELP": "Leave blank for trial"
+    },
+    "password": {
+      "LABEL": "Password",
+      "PLACEHOLDER": "Leave empty for random password."
+    }
+  },
+  "search": {
+    "TITLE": "Servers",
+    "EMPTY": "No IP or sub-client Assigned"
+  },
   "switch": {
     "TITLE": "Switch Controls",
     "NOT_ENABLED": "This server is not ready for switch controls.",
@@ -127,8 +269,7 @@
       }
     }
   },
-  "search": {
-    "TITLE": "Servers",
-    "EMPTY": "No IP or sub-client Assigned"
+  "table-action": {
+    "MANAGE": "manage"
   }
 }
