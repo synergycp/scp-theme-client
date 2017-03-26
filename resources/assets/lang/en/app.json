@@ -49,6 +49,7 @@
     }
   },
   "action": {
+    "HEADING": "Actions",
     "BULK": "With Selected:",
     "VIEW": "view",
     "MANAGE": "manage",

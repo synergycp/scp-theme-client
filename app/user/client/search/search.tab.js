@@ -21,9 +21,9 @@
    *
    * @ngInject
    */
-  function ClientSearchTabFactory ($state, ClientList, ListFilter, RouteHelpers) {
+  function ClientSearchTabFactory ($state, SubClientList, ListFilter, RouteHelpers) {
     return function () {
-        var list = ClientList();
+        var list = SubClientList();
         return new ClientSearchTab(
           list,
           $state,

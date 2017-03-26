@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('app.user.client.list.filters')
-    .controller('ClientFiltersCtrl', ClientFiltersCtrl)
+    .module('app.user.client.sub.list.filters')
+    .controller('SubClientFiltersCtrl', SubClientFiltersCtrl)
     ;
 
   /**
    * @ngInject
    */
-  function ClientFiltersCtrl(Select, Observable, $state, $q, $timeout) {
+  function SubClientFiltersCtrl(Select, Observable, $state, $q, $timeout) {
     var filters = this;
 
     filters.$onInit = init;
@@ -18,7 +18,6 @@
     filters.current = {
       q: $state.params.q,
     };
-    // filters.group = Select('group');
     filters.searchFocus = Observable(false);
 
     filters.fireChangeEvent = fireChangeEvent;
@@ -28,7 +27,7 @@
     function init() {
       var promises = [
         $timeout(),
-        // filters.group.setSelectedId($state.params['group']),
+        // filters.client.setSelectedId($state.params['client']),
       ];
 
       $q.all(promises)
@@ -38,16 +37,16 @@
     }
 
     function listenForChanges() {
-      // filters.group.on('change', fireChangeEvent);
+      // filters.client.on('change', fireChangeEvent);
     }
 
     function fireChangeEvent() {
       _.assign(filters.current, {
-        // group: filters.group.getSelected('id'),
+        // client: filters.client.getSelected('id'),
       });
 
       $state.go($state.current.name, {
-        // 'group': filters.current.group,
+        // 'client': filters.current.client,
         'q': filters.current.q,
       });
 

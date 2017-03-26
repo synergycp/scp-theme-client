@@ -1,19 +1,10 @@
 {
-  "list": {
-    "TITLE": "Sub Clients",
-    "NO-SERVERS": "-",
-    "EMPTY": "No Sub Clients found. You can create one below, which will allow you to add that client to any of your servers.",
-    "filter": {
-      "search": {
-        "LABEL": "Search",
-        "PLACEHOLDER": "Type to search..."
-      }
-    },
-    "heading": {
-      "NAME": "Name",
-      "EMAIL": "E-Mail Address",
-      "SERVER-COUNT": "Servers",
-      "ACTIONS": "Actions"
+  "modal": {
+    "delete": {
+      "TITLE": "Delete Sub Client(s)?",
+      "BODY": "Are you sure you wish to delete these sub client(s)?",
+      "CANCEL": "Cancel",
+      "SUBMIT": "Delete"
     }
   },
   "search": {
@@ -29,6 +20,44 @@
     },
     "name": {
       "LABEL": "Name"
+    }
+  },
+  "sub": {
+    "list": {
+      "TITLE": "Sub Clients",
+      "NO-SERVERS": "-",
+      "EMPTY": "No Sub Clients found. You can create one below, which will allow you to add that client to any of your servers.",
+      "filter": {
+        "search": {
+          "LABEL": "Search",
+          "PLACEHOLDER": "Type to search..."
+        }
+      },
+      "heading": {
+        "NAME": "Name",
+        "EMAIL": "E-Mail Address",
+        "SERVER-COUNT": "Servers",
+        "ACTIONS": "Actions"
+      }
+    },
+    "form": {
+      "title": {
+        "ADD": "Create Sub Client"
+      },
+      "email": {
+        "LABEL": "Email"
+      },
+      "name": {
+        "LABEL": "Name"
+      }
+    },
+    "modal": {
+      "delete": {
+        "TITLE": "Delete Super Clients",
+        "SUBMIT": "Delete",
+        "CANCEL": "Cancel",
+        "BODY": "Click \"Delete\" to permanently delete these Super Clients:"
+      }
     }
   },
   "super": {
