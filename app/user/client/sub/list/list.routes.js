@@ -1,10 +1,6 @@
 (function () {
-  'use strict';
-
-  var DIR = 'user/client/list/';
-
   angular
-    .module('app.user.client.list')
+    .module('app.user.client.sub.list')
     .config(routeConfig)
     ;
 
@@ -14,11 +10,11 @@
   function routeConfig($stateProvider, RouteHelpersProvider) {
     var helper = RouteHelpersProvider;
     $stateProvider
-      .state('app.user.client.list', {
+      .state('app.user.client.sub.list', {
         url: '?q',
-        title: 'Clients',
-        controller: 'ClientIndexCtrl as vm',
-        templateUrl: helper.basepath(DIR+'list.index.html'),
+        title: 'Sub Clients',
+        controller: 'SubClientIndexCtrl as vm',
+        templateUrl: helper.basepath('user/client/sub/list/list.index.html'),
         reloadOnSearch: false,
       })
       ;

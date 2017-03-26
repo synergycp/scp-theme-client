@@ -1,0 +1,44 @@
+extends /resources/angle/pug/table-checkable
+
+block headings
+  th.sortable(ng-if="table.showName")
+    span(translate="client.sub.list.heading.NAME")
+    sort(col="last")
+  th.sortable(ng-if="table.showEmail")
+    span(translate="client.sub.list.heading.EMAIL")
+    sort(col="email")
+  th(
+    ng-if="table.showServerCount"
+    translate="client.sub.list.heading.SERVER-COUNT"
+  )
+  th(
+    data-ng-if="table.showActions"
+    translate="app.action.HEADING"
+  )
+
+
+block columns
+  td(
+    ng-if="table.showName"
+    ng-bind="row.child.name"
+  )
+  td(
+    ng-if="table.showEmail"
+    ng-bind="row.child.email"
+  )
+  td(ng-if="table.showServerCount")
+    span(
+      ng-if="!row.child.serversCount"
+      translate="client.sub.list.NO-SERVERS"
+    )
+    a(
+      ui-sref="app.hardware.server.list({ client: row.child.id })"
+      ng-bind="row.child.serversCount"
+      ng-if="row.child.serversCount"
+    )
+  td(data-ng-if="table.showActions")
+    .btn-group.btn-group-xs
+      a.btn.btn-default(
+        translate="app.action.DELETE"
+        ng-click="table.list.list.confirm.delete([row])"
+      )

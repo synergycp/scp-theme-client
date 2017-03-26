@@ -19,7 +19,7 @@
       sref: "app.account.settings",
     }).item({
       text: "Sub Clients",
-      sref: "app.user.client.list",
+      sref: "app.user.client.sub.list",
     }).item({
       text: "Super Clients",
       sref: "app.user.client.super.list"

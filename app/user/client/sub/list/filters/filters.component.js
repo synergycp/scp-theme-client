@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-    .module('app.user.client.list.filters')
-    .component('clientFilters', {
+    .module('app.user.client.sub.list.filters')
+    .component('subClientFilters', {
       require: {
         list: '\^list',
       },
@@ -12,9 +12,9 @@
         current: '=',
         change: '&?',
       },
-      controller: 'ClientFiltersCtrl as filters',
+      controller: 'SubClientFiltersCtrl as filters',
       transclude: true,
-      templateUrl: 'app/user/client/list/filters/filters.html'
+      templateUrl: 'app/user/client/sub/list/filters/filters.html'
     })
     ;
 })();
