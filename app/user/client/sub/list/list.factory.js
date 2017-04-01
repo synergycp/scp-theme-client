@@ -13,6 +13,10 @@
    */
   function SubClientListFactory (List, ListConfirm, ApiKey) {
     return function () {
+      if (!ApiKey.owner()) {
+        return;
+      }
+
       var currentUserId = ApiKey.owner().id;
       var list = List('client/'+currentUserId+'/sub');
       var clientList = List('client');
