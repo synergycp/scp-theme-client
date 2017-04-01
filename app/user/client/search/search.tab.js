@@ -12,8 +12,17 @@
    *
    * @ngInject
    */
-  function addClientSearchTab(Search, ClientSearchTab) {
-    Search.tab.add(ClientSearchTab());
+  function addClientSearchTab(Search, ClientSearchTab, Auth) {
+    var tab;
+    Auth.whileLoggedIn(add, remove);
+
+    function add() {
+      Search.tab.add(tab = ClientSearchTab());
+    }
+
+    function remove() {
+      Search.tab.remove(tab);
+    }
   }
 
   /**

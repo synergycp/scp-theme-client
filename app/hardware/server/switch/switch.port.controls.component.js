@@ -1,8 +1,6 @@
 (function () {
   'use strict';
 
-  var INTERVAL_CHECK_STATUS = 5 * 1000;
-
   angular
     .module('app.hardware.server')
     .component('serverSwitchPortControl', {
