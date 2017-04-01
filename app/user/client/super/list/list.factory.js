@@ -13,6 +13,10 @@
    */
   function SuperClientListFactory (List, ListConfirm, ApiKey, Alert) {
     return function () {
+      if (!ApiKey.owner()) {
+        return;
+      }
+
       var currentUserId = ApiKey.owner().id;
       var list = List('client/'+currentUserId+'/super');
       var clientList = List('client');
