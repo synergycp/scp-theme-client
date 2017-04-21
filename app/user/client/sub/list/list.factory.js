@@ -25,6 +25,8 @@
       list.bulk.add('Delete', list.confirm.delete);
       list.transform.add(function (item) {
         item.name = item.child.name;
+        item.email = item.child.email;
+        item.serversCount = item.child.serversCount;
 
         return item;
       });
