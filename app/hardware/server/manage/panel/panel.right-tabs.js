@@ -17,7 +17,7 @@
       server.access.switch && {
         name: 'control.switch',
         templateUrl: PANELS + '/panel.control.switch.html'
-      }, server.access.impi && {
+      }, server.access.ipmi && {
         name: 'control.ipmi',
         templateUrl: PANELS + '/panel.control.ipmi.html'
       }, server.access.pxe && {

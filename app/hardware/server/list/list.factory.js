@@ -11,9 +11,7 @@
    * @ngInject
    */
   function ServerListFactory(
-    _,
     List,
-    ListConfirm,
     ServerAssign
   ) {
     return function () {

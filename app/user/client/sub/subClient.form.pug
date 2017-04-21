@@ -1,0 +1,18 @@
+doctype html
+include /resources/angle/pug/mixins/form
+
++field(
+  "{{ 'client.sub.form.email.LABEL' | translate }}",
+  "email"
+)(
+  ng-model="subClientForm.input.email"
+)
+
++double-field(
+  "{{ 'client.sub.form.name.LABEL' | translate }}",
+  "name", {
+    "ng-model": "subClientForm.input.first"
+  }, {
+    "ng-model": "subClientForm.input.last"
+  }
+)

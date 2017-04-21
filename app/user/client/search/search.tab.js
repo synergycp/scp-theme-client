@@ -12,8 +12,17 @@
    *
    * @ngInject
    */
-  function addClientSearchTab(Search, ClientSearchTab) {
-    Search.tab.add(ClientSearchTab());
+  function addClientSearchTab(Search, ClientSearchTab, Auth) {
+    var tab;
+    Auth.whileLoggedIn(add, remove);
+
+    function add() {
+      Search.tab.add(tab = ClientSearchTab());
+    }
+
+    function remove() {
+      Search.tab.remove(tab);
+    }
   }
 
   /**
@@ -21,9 +30,9 @@
    *
    * @ngInject
    */
-  function ClientSearchTabFactory ($state, ClientList, ListFilter, RouteHelpers) {
+  function ClientSearchTabFactory ($state, SubClientList, ListFilter, RouteHelpers) {
     return function () {
-        var list = ClientList();
+        var list = SubClientList();
         return new ClientSearchTab(
           list,
           $state,

@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('app.user.client.list.filters', [
+    .module('app.user.client.sub.list.filters', [
     ]);
 })();
