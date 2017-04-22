@@ -11,6 +11,7 @@
         show: '<',
         current: '=',
         change: '&?',
+        shouldWatchMainSearch: '=?'
       },
       controller: 'SubClientFiltersCtrl as filters',
       transclude: true,
