@@ -9,11 +9,7 @@
   /**
    * @ngInject
    */
-<<<<<<< HEAD:app/user/client/sub/list/filters/filters.controller.js
-  function SubClientFiltersCtrl(Select, Observable, $state, $q, $timeout) {
-=======
-  function ClientFiltersCtrl(Select, Search, Observable, $state, $q, $timeout) {
->>>>>>> 0dedf25f4d9b788bf8fc52700b35cf9a9f280be9:app/user/client/list/filters/filters.controller.js
+  function SubClientFiltersCtrl(Select, Search, Observable, $state, $q, $timeout) {
     var filters = this;
 
     filters.$onInit = init;
@@ -41,16 +37,13 @@
     }
 
     function listenForChanges() {
-<<<<<<< HEAD:app/user/client/sub/list/filters/filters.controller.js
       // filters.client.on('change', fireChangeEvent);
-=======
       filters.shouldWatchMainSearch && Search.on('change', function(searchStr) {
         _.assign(filters.current, {
           q: searchStr
         });
       })
       // filters.group.on('change', fireChangeEvent);
->>>>>>> 0dedf25f4d9b788bf8fc52700b35cf9a9f280be9:app/user/client/list/filters/filters.controller.js
     }
 
     function fireChangeEvent() {
