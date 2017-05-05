@@ -67,8 +67,8 @@
         $api.get(filterBw)
           .then(storeData)
           .then(setupFilter),
-        $api.one('usage')
-          .get(filterBw)
+        $api
+          .getList('usage')
           .then(storeBilling),
       ]);
     }
@@ -103,8 +103,9 @@
       filter.setMaxTime(response.max_time);
     }
 
-    function storeBilling(data) {
+    function storeBilling(usageData) {
       var billing = bandwidth.billing;
+      var data = usageData.length ? usageData[0] : null;
       billing.isActive = data && 'used' in data;
       if (!billing.isActive) {
         return false;
@@ -112,7 +113,7 @@
 
       billing.max = data.max;
       billing.used = data.used;
-      billing.cycleStart = data.cycle_start;
+      billing.cycleStart = date.parse(data.cycle_started_at.iso_8601).format(date.formatDate);
       billing.percent = data.percent;
     }
   }
