@@ -52,7 +52,7 @@
     "SRV_ID": "Server ID"
   },
   "ipmi": {
-    "TITLE": "IPMI Controls",
+    "TITLE": "Power Controls",
     "NOT_ENABLED": "This server is not IPMI-ready",
     "ADDRESS": "IPMI IP Address",
     "BMC": {
@@ -123,6 +123,7 @@
       "STATUS": "Power Status",
       "CHECKED": "Last Checked",
       "BTN": "Power",
+      "TYPE": "Type",
       "on": {
         "BTN": "Power On"
       },
