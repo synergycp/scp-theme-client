@@ -25,7 +25,12 @@
           name: 'pxe',
           templateUrl: PANELS + '/panel.os-reload.html'
         },
-      ]) : [];
+      ]) : [
+        {
+          name: 'alerts',
+          templateUrl: PANELS + '/panel.alerts.html',
+        }
+      ];
     }    
   }
 })();
