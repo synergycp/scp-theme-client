@@ -2,6 +2,9 @@
   "EDIT": "Edit",
   "SUSPEND": "Suspend",
   "UNSUSPEND": "Activate",
+  "alert": {
+    "SUSPENDED": "This server is currently suspended so you do not have access to any controls."
+  },
   "assign": {
     "TITLE": "Server Assignments",
     "ITEM": "Item",
