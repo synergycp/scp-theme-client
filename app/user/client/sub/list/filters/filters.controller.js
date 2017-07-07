@@ -54,7 +54,7 @@
       $state.go($state.current.name, {
         // 'client': filters.current.client,
         'q': filters.current.q,
-      });
+      }, {location: 'replace'});
       filters.shouldWatchMainSearch && Search.go(filters.current.q);
 
       if (filters.change) {

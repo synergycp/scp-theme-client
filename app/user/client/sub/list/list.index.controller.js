@@ -11,7 +11,7 @@
    */
   function SubClientIndexCtrl(SubClientList, ListFilter, $state, ApiKey) {
     var vm = this;
-    $state.transitionTo($state.current.name, {client: ApiKey.owner().id}, { notify: false, inherit: true });
+    $state.transitionTo($state.current.name, {client: ApiKey.owner().id}, { notify: false, inherit: true, location: 'replace'});
 
     vm.list = SubClientList();
     vm.filters = ListFilter(vm.list);
