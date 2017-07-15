@@ -11,7 +11,7 @@
    */
   function SuperClientIndexCtrl(SuperClientList, ListFilter, $state, ApiKey) {
     var vm = this;
-    $state.transitionTo($state.current.name, {client: ApiKey.owner().id}, { notify: false, inherit: true });
+    $state.transitionTo($state.current.name, {client: ApiKey.owner().id}, { notify: false, inherit: true, location: 'replace' });
 
     vm.list = SuperClientList();
     vm.filters = ListFilter(vm.list);

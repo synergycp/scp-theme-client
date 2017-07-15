@@ -29,7 +29,7 @@
     }
 
     function setStateParams() {
-      $state.go($state.current.name, vm.filters.current);
+      $state.go($state.current.name, vm.filters.current, {location: 'replace'});
     }
 
     function setFilters() {
