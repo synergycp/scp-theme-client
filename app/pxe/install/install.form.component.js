@@ -91,7 +91,7 @@
           queue: true,
           edition_id: (edition || {}).id,
           license_key: pxeInstallForm.input.licenseKey,
-          password: pxeInstallForm.input.password,
+          password: result.password,
         })
       });
     }
