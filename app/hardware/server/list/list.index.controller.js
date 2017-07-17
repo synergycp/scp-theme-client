@@ -14,7 +14,8 @@
   function ServerIndexCtrl(ServerList, ListFilter, $scope, $state) {
     var vm = this;
 
-    vm.list = ServerList();
+    vm.list = ServerList()
+      .setPaginationAndSortToUrl();
     vm.filters = ListFilter(vm.list);
     vm.filters.on('change', setStateParams);
 
@@ -24,6 +25,7 @@
 
     function activate() {
       $scope.$on('$locationChangeSuccess', setFilters);
+      $scope.$on('$destroy', onDestroy);
 
       setFilters();
     }
@@ -37,6 +39,10 @@
         client: $state.params.client,
         q: $state.params.q,
       });
+    }
+
+    function onDestroy() {
+      vm.list.clearPaginationAndSortFromUrl();
     }
   }
 })();
