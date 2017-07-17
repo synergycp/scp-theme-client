@@ -9,11 +9,12 @@
   /**
    * @ngInject
    */
-  function SuperClientIndexCtrl(SuperClientList, ListFilter, $state, ApiKey) {
+  function SuperClientIndexCtrl(SuperClientList, ListFilter, $state, $scope, ApiKey) {
     var vm = this;
     $state.transitionTo($state.current.name, {client: ApiKey.owner().id}, { notify: false, inherit: true, location: 'replace' });
 
-    vm.list = SuperClientList();
+    vm.list = SuperClientList()
+      .setPaginationAndSortToUrl();
     vm.filters = ListFilter(vm.list);
 
     vm.create = {
@@ -37,10 +38,15 @@
           item.name = item.grantee.name;
         })
       })
+      $scope.$on('$destroy', onDestroy);
     }
 
     function create() {
       vm.list.create(vm.create.getData());
+    }
+
+    function onDestroy() {
+      vm.list.clearPaginationAndSortFromUrl();
     }
   }
 })();
