@@ -16,6 +16,7 @@
         showCpu: '=?',
         showRam: '=?',
         showHdds: '=?',
+        showLocation: '=?',
       },
       controller: 'ServerTableCtrl as table',
       transclude: true,
@@ -43,6 +44,7 @@
         showClient: true,
         showStatus: true,
         showCpu: true,
+        showLocation: true,
         showRam: false,
         showHdds: false,
       });

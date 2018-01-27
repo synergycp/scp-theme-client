@@ -52,6 +52,7 @@
     "CPU": "CPU",
     "HDDS": "Hard Drives",
     "RAM": "RAM",
+    "LOCATION": "Location",
     "SRV_ID": "Server ID"
   },
   "ipmi": {

@@ -10,6 +10,9 @@ block headings
   th.sortable(ng-if="table.showIp")
     span(translate="server.heading.IP")
     sort(col="ip")
+  th.sortable(ng-if="table.showLocation")
+    span(translate="server.heading.LOCATION")
+    sort(col="group")
   th.sortable(ng-if="table.showClient")
     span(translate="server.heading.CLIENT")
     sort(col="client")
@@ -28,10 +31,11 @@ block headings
   th Actions
 
 block columns
-  td(
-    ng-if="table.showSrvId"
-    ng-bind="row.srv_id"
-  )
+  td(ng-if="table.showSrvId")
+    a(
+      ui-sref="app.hardware.server.view.manage({ id: row.id })"
+      ng-bind="row.srv_id"
+    )
   td(ng-if="table.showNickname" width="250px")
     editable(
       value="row.nickname"
@@ -40,6 +44,10 @@ block columns
   td(
     ng-if="table.showIp"
     ng-bind="row.entity.full_ip || '-'"
+  )
+  td(
+    ng-if="table.showLocation"
+    ng-bind="row.group.name || '-'"
   )
   td(ng-if="table.showClient")
     a(
