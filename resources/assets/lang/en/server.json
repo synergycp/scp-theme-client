@@ -70,6 +70,29 @@
         }
       }
     },
+
+    "acl": {
+      "TITLE": "Manage ACLs",
+      "modal": {
+        "manage": {
+          "TITLE": "ACLs",
+          "CREATE": "Grant IP Access"
+        },
+        "delete": {
+          "TITLE": "Delete ACL",
+          "SUBMIT": "Delete",
+          "CANCEL": "Cancel",
+          "BODY": "Click \"Delete\" to permanently delete these ACLs:"
+        }
+      },
+      "form": {
+        "SUBMIT": "Add ACL",
+        "ip": {
+          "LABEL": "IP Address",
+          "PLACEHOLDER": ""
+        }
+      }
+    },
     "client": {
       "USER": "Client Username",
       "PASS": "Client Password",
@@ -122,6 +145,9 @@
           "PERSIST": "Make Persistent"
         }
       }
+    },
+    "kvm": {
+      "LAUNCH": "Launch KVM"
     },
     "power": {
       "STATUS": "Power Status",
