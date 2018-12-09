@@ -61,10 +61,10 @@
     },
     "modal": {
       "delete": {
-        "TITLE": "Delete Super Clients",
+        "TITLE": "Delete Sub Clients",
         "SUBMIT": "Delete",
         "CANCEL": "Cancel",
-        "BODY": "Click \"Delete\" to permanently delete these Super Clients:"
+        "BODY": "Click \"Delete\" to permanently delete these Sub Clients:"
       }
     }
   },
