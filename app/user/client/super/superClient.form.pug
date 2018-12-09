@@ -6,14 +6,18 @@ include /resources/angle/pug/mixins/form
   "email"
 )(
   ng-model="superClientForm.input.email"
+  placeholder="{{ 'client.super.form.email.PLACEHOLDER' | translate }}"
+  
 )
 
 +double-field(
   "{{ 'client.super.form.name.LABEL' | translate }}",
   "name", {
-    "ng-model": "superClientForm.input.first"
+    "ng-model": "superClientForm.input.first",
+    "placeholder": "{{ 'client.super.form.name.first.PLACEHOLDER' | translate }}"
   }, {
-    "ng-model": "superClientForm.input.last"
+    "ng-model": "superClientForm.input.last",
+    "placeholder": "{{ 'client.super.form.name.last.PLACEHOLDER' | translate }}"
   }
 )
 
@@ -21,4 +25,3 @@ include /resources/angle/pug/mixins/form
   +checkbox("{{ 'client.super.form.acknowledged.LABEL' | translate }}")(
     ng-model="superClientForm.input.acknowledged"
   )
-
