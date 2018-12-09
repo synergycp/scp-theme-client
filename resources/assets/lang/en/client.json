@@ -16,7 +16,8 @@
       "ADD": "Create Sub Client"
     },
     "email": {
-      "LABEL": "Email"
+      "LABEL": "Email",
+      "PLACEHOLDER": "Email Address"
     },
     "name": {
       "LABEL": "Name"
@@ -45,10 +46,17 @@
         "ADD": "Create Sub Client"
       },
       "email": {
-        "LABEL": "Email"
+        "LABEL": "Email",
+        "PLACEHOLDER": "Email Address"
       },
       "name": {
-        "LABEL": "Name"
+        "LABEL": "Name",
+        "first": {
+          "PLACEHOLDER": "First Name"
+        },
+        "last": {
+          "PLACEHOLDER": "Last Name"
+        }
       }
     },
     "modal": {
@@ -80,10 +88,17 @@
         "ADD": "Create Super Client"
       },
       "email": {
-        "LABEL": "Email"
+        "LABEL": "Email",
+        "PLACEHOLDER": "Email Address"
       },
       "name": {
-        "LABEL": "Name"
+        "LABEL": "Name",
+        "first": {
+          "PLACEHOLDER": "First Name"
+        },
+        "last": {
+          "PLACEHOLDER": "Last Name"
+        }
       },
       "acknowledged": {
         "LABEL": "I acknowledge that this email account will have full access to all of my servers"
