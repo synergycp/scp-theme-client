@@ -231,26 +231,11 @@
       "BODY": "Suspending a server does the following:",
       "ACTIONS": [
         "Turn off server's switch port",
-        "Disable all client controls"
+        "Disable all client controls",
+        "Remove any IPMI ACLs"
       ],
-      "ACTION_COUNT": "2",
+      "ACTION_COUNT": "3",
       "CONFIRM": "Click \"Suspend\" to suspend these servers:"
-    },
-    "wipe": {
-      "TITLE": "Wipe Server",
-      "SUBMIT": "Wipe",
-      "CANCEL": "Cancel",
-      "BODY": "This action is irreversible. Wiping a server does the following:",
-      "ACTIONS": [
-        "Unsassign all IP entities",
-        "Unassign client",
-        "Set nickname to EMPTY",
-        "Remove IPMI user",
-        "Turn server off via IPMI",
-        "Turn off server's switch port"
-      ],
-      "ACTION_COUNT": "6",
-      "CONFIRM": "Click \"Wipe\" to wipe these servers:"
     }
   },
   "notes": {
