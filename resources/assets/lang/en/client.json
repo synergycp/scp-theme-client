@@ -5,6 +5,18 @@
       "BODY": "Are you sure you wish to delete these sub client(s)?",
       "CANCEL": "Cancel",
       "SUBMIT": "Delete"
+    },
+    "create": {
+      "CANCEL": "Cancel"
+    },
+    "send-email": {
+      "CANCEL": "Cancel",
+      "SUBMIT": "Send Email",
+      "TITLE": "Send Email to Client(s)",
+      "type": {
+        "LABEL": "Email Type",
+        "client-account-created": "Welcome Email (client-account-created.tpl)"
+      }
     }
   },
   "search": {
@@ -21,6 +33,10 @@
     },
     "name": {
       "LABEL": "Name"
+    },
+    "options": {
+      "LABEL": "Options",
+      "SEND-WELCOME-EMAIL": "Send Welcome Email"
     }
   },
   "sub": {

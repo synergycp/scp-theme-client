@@ -11,7 +11,7 @@
    *
    * @ngInject
    */
-  function SuperClientListFactory (List, ListConfirm, ApiKey, Alert) {
+  function SuperClientListFactory (List, ListConfirm, ApiKey, Alert, ClientModal) {
     return function () {
       if (!ApiKey.owner()) {
         return;
@@ -22,6 +22,9 @@
       var clientList = List('client');
       
       list.confirm = ListConfirm(list, 'client.super.modal.delete');
+      list.bulk.add('Send Email', function (clients) {
+        return ClientModal.sendEmail(clients).open().result;
+      });
       list.bulk.add('Delete', list.confirm.delete);
 
       var createSuperClient = list.create;

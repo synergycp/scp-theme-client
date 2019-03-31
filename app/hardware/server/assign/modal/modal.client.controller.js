@@ -23,6 +23,7 @@
     Api,
     _,
     servers,
+    EventEmitter,
     access
   ) {
     var modal = this;
@@ -44,6 +45,7 @@
       value: MODE.SEARCH,
     }, MODE);
     modal.create = {};
+    EventEmitter().bindTo(modal.create);
     modal.allowedAccess = {
       pxe: false,
       ipmi: false,
@@ -60,7 +62,7 @@
     //////////
 
     function activate() {
-      $translateModuleLoader.addPart('user');
+      $translateModuleLoader.addPart('client');
       $translate.refresh();
     }
 
@@ -79,6 +81,7 @@
             }
 
             modal.access.client = client;
+            modal.create.fire('created', client);
 
             return client;
           })
