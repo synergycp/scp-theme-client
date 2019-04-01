@@ -5,6 +5,9 @@
     email: '',
     first: '',
     last: '',
+    sendEmail: {
+      welcome: true,
+    }
   };
 
   angular
@@ -25,7 +28,7 @@
   /**
    * @ngInject
    */
-  function SubClientFormCtrl() {
+  function SubClientFormCtrl(Api, _) {
     var subClientForm = this;
 
     subClientForm.$onInit = init;
@@ -36,6 +39,11 @@
       subClientForm.form.getData = getData;
       subClientForm.input = subClientForm.form.input = subClientForm.form.input || {};
       _.assign(subClientForm.input, INPUTS);
+      (subClientForm.form.on || function() {})('created', function (result) {
+        return subClientForm.input.sendEmail.welcome && Api.all('client/'+result.id+'/email').post({
+          type: 'client-account-created',
+        });
+      });
     }
 
     function getData() {

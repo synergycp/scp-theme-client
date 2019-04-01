@@ -5,7 +5,10 @@
     email: '',
     first: '',
     last: '',
-    acknowledged: false
+    acknowledged: false,
+    sendEmail: {
+      welcome: true,
+    }
   };
 
   angular
@@ -26,7 +29,7 @@
   /**
    * @ngInject
    */
-  function SuperClientFormCtrl() {
+  function SuperClientFormCtrl(Api) {
     var superClientForm = this;
 
     superClientForm.$onInit = init;
@@ -37,6 +40,12 @@
       superClientForm.form.getData = getData;
       superClientForm.input = superClientForm.form.input = superClientForm.form.input || {};
       _.assign(superClientForm.input, INPUTS);
+
+      (superClientForm.form.on || function() {})('created', function (result) {
+        return superClientForm.input.sendEmail.welcome && Api.all('client/'+result.grantee.id+'/email').post({
+          type: 'client-account-created',
+        });
+      });
     }
 
     function getData() {

@@ -19,3 +19,9 @@ include /resources/angle/pug/mixins/form
     "placeholder": "{{ 'client.sub.form.name.last.PLACEHOLDER' | translate }}"
   }
 )
+
+div(ng-if="!subClientForm.form.input.id")
+  +label("client.form.options.LABEL")
+    +checkbox("client.form.options.SEND-WELCOME-EMAIL")(
+      ng-model="subClientForm.input.sendEmail.welcome"
+    )
