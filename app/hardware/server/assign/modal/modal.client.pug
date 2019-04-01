@@ -30,7 +30,7 @@ form(ng-submit="modal.submit()")
               span(ng-bind-html="choice.name | highlight: $select.search")
               small(ng-bind-html="' ' + choice.email | highlight: $select.search")
 
-    client-form(
+    sub-client-form(
       ng-if="modal.mode.value === modal.mode.ADD"
       form="modal.create"
     )

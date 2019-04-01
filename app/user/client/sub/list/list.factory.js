@@ -11,7 +11,7 @@
    *
    * @ngInject
    */
-  function SubClientListFactory (List, ListConfirm, ApiKey) {
+  function SubClientListFactory (List, ListConfirm, ApiKey, ClientModal) {
     return function () {
       if (!ApiKey.owner()) {
         return;
@@ -22,6 +22,9 @@
       var clientList = List('client');
       
       list.confirm = ListConfirm(list, 'client.sub.modal.delete');
+      list.bulk.add('Send Email', function (clients) {
+        return ClientModal.sendEmail(clients).open().result;
+      });
       list.bulk.add('Delete', list.confirm.delete);
       list.transform.add(function (item) {
         item.name = item.child.name;

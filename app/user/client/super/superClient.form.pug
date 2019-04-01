@@ -21,7 +21,11 @@ include /resources/angle/pug/mixins/form
   }
 )
 
-+label("")
-  +checkbox("{{ 'client.super.form.acknowledged.LABEL' | translate }}")(
-    ng-model="superClientForm.input.acknowledged"
-  )
+div(ng-if="!superClientForm.form.input.id")
+  +label("")
+    +checkbox("client.form.options.SEND-WELCOME-EMAIL")(
+      ng-model="superClientForm.input.sendEmail.welcome"
+    )
+    +checkbox("{{ 'client.super.form.acknowledged.LABEL' | translate }}")(
+      ng-model="superClientForm.input.acknowledged"
+    )

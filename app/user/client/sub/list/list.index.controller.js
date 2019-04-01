@@ -9,7 +9,7 @@
   /**
    * @ngInject
    */
-  function SubClientIndexCtrl(SubClientList, ListFilter, $state, $scope, ApiKey) {
+  function SubClientIndexCtrl(SubClientList, ListFilter, $state, $scope, ApiKey, EventEmitter) {
     var vm = this;
     $state.transitionTo($state.current.name, {client: ApiKey.owner().id}, { notify: false, inherit: true, location: 'replace'});
 
@@ -21,6 +21,7 @@
       input: {},
       submit: create,
     };
+    EventEmitter().bindTo(vm.create);
 
     vm.logs = {
       filter: {
@@ -36,13 +37,14 @@
       vm.list.on('load', function(items) {
         _(items).forEach(function(item) {
           item.name = item.grantee.name;
-        })
-      })
+        });
+      });
       $scope.$on('$destroy', onDestroy);
     }
 
     function create() {
-      vm.list.create(vm.create.getData());
+      vm.list.create(vm.create.getData())
+        .then(vm.create.fire.bind(null, 'created'));
     }
 
     function onDestroy() {
