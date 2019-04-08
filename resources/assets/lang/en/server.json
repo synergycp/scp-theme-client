@@ -70,7 +70,15 @@
         }
       }
     },
-
+    "system": {
+      "info": {
+        "TITLE": "BMC Info",
+        "modal": {
+          "TITLE": "BMC Info",
+          "REFRESH": "Refresh BMC Info"
+        }
+      }
+    },
     "acl": {
       "TITLE": "Manage ACLs",
       "modal": {
