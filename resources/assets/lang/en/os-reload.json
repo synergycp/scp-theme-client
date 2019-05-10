@@ -29,6 +29,7 @@
   "server": {
     "TITLE": "Operating System Reload",
     "NOT_ENABLED": "This server is not prepared for Operating System Reloads.",
+    "NO_PXE_ACCESS": "You do not have access to Operating System Reloads on this server.",
     "SUBMIT": "Reload Operating System",
     "server": {
       "LABEL": "Server",

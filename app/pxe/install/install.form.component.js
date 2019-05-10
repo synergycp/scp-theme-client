@@ -25,6 +25,7 @@
     pxeInstallForm.$onInit = init;
     pxeInstallForm.server = Select('server').on('change', syncServer);
     pxeInstallForm.isEnabled = true;
+    pxeInstallForm.hasPxeAccess = true;
     pxeInstallForm.canRAID = false;
     pxeInstallForm.submit = submit;
     pxeInstallForm.input = {
@@ -51,6 +52,7 @@
       server.get().then(function (res) {
         pxeInstallForm.isEnabled = res.is_pxe_ready;
         pxeInstallForm.canRAID = res.raid_soft_ready;
+        pxeInstallForm.hasPxeAccess = res.access.pxe;
       });
     }
 

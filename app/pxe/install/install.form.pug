@@ -26,8 +26,16 @@ form(ng-submit="pxeInstallForm.submit()")
           translate="server.EDIT"
           ui-sref="app.hardware.server.view.edit({ id: pxeInstallForm.server.selected.id })"
         )
+        
+      .text-center(ng-if="!pxeInstallForm.hasPxeAccess && pxeInstallForm.isEnabled")
+        p(translate="os-reload.server.NO_PXE_ACCESS")
+        a.btn.btn-primary(
+          ng-if="pxeInstallForm.server.selected.canEdit"
+          translate="server.EDIT"
+          ui-sref="app.hardware.server.view.edit({ id: pxeInstallForm.server.selected.id })"
+        )
 
-      div(ng-if="pxeInstallForm.isEnabled")
+      div(ng-if="pxeInstallForm.isEnabled && pxeInstallForm.hasPxeAccess")
         +label("{{ 'os-reload.server.profile.LABEL' | translate }}")
           +ui-select("pxeInstallForm.input.profile")
             ui-select-match(placeholder="{{ 'os-reload.server.profile.PLACEHOLDER' | translate }}")
@@ -90,7 +98,7 @@ form(ng-submit="pxeInstallForm.submit()")
             ng-model="pxeInstallForm.input.disk.index"
           )
 
-    .panel-footer.clearfix(ng-if="pxeInstallForm.isEnabled || !pxeInstallForm.server.selected")
+    .panel-footer.clearfix(ng-if="(pxeInstallForm.isEnabled || !pxeInstallForm.server.selected) && pxeInstallForm.hasPxeAccess")
       .pull-right
         button.btn.btn-primary(
           type="submit"
