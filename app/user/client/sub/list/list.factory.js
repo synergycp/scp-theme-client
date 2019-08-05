@@ -17,8 +17,7 @@
         return;
       }
 
-      var currentUserId = ApiKey.owner().id;
-      var list = List('client/'+currentUserId+'/sub');
+      var list = List('client/*/sub');
       var clientList = List('client');
       
       list.confirm = ListConfirm(list, 'client.sub.modal.delete');
