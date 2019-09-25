@@ -287,18 +287,19 @@
     "SPEED": "Port Speed",
     "PORT": "Port Number",
     "MAC": "MAC Address",
+
     "power": {
-      "BTN": "Port Power",
+      "BTN": "Port State",
       "on": {
-        "BTN": "Port Power On"
+        "BTN": "Enable"
       },
       "off": {
-        "BTN": "Port Power Off",
+        "BTN": "Disable",
         "confirm": {
-          "TITLE": "Set Port Power to Off?",
-          "BODY": "This will turn off power for this server's switch port.",
+          "TITLE": "Disable port?",
+          "BODY": "This will disable this server's switch port.",
           "CANCEL": "Cancel",
-          "SUBMIT": "Power Off Port"
+          "SUBMIT": "Disable Port"
         }
       }
     }
