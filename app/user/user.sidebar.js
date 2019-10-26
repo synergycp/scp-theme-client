@@ -18,7 +18,7 @@
 
   angular
     .module('app.user')
-    .config(NavConfig)
+    .run(NavConfig)
     ;
 
   /**
