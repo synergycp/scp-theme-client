@@ -18,29 +18,31 @@
 
   angular
     .module('app.user')
-    .run(NavConfig)
+    .run(UserSidebarShowWithPermissions)
     ;
 
   /**
    * @ngInject
    */
-  function NavConfig(Auth, NavProvider, Permission) {
+  function UserSidebarShowWithPermissions(Auth, Select /*, Permission*/) {
+    var userSidebar = this;
     //Need to import Auth and Permission here. Why doesn't this work? in install.nav.config.js and search.tab.js
     //this is used in seemingly the exact same way.
-    var group = NavProvider.group('user', {
-      translate: "nav.USERS",
-      sref: "app.account.settings",
-      icon: "fa fa-user",
-    });
+    userSidebar.group = Select('group');
+    // var group = NavProvider.group('user', {
+    //   translate: "nav.USERS",
+    //   sref: "app.account.settings",
+    //   icon: "fa fa-user",
+    // });
 
-    Auth.whileLoggedIn(show, hide);
+    Auth.whileLoggedIn(showPermitted, hide);
 
-    function show() {
-      Permission
-        .map()
-        .then(showPermitted)
-      ;
-    }
+    // function show() {
+    //   Permission
+    //     .map()
+    //     .then(showPermitted)
+    //   ;
+    // }
 
     function showPermitted(map) {
       group.item(MY_ACCOUNT);
