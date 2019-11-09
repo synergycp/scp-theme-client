@@ -11,7 +11,7 @@
    */
   function configPackagesLoader(PackagesLoaderProvider) {
     PackagesLoaderProvider
-      .setApiBase('package/angular-client')
+      .setApiBase('package/asset/angular-client')
       ;
   }
 })();
