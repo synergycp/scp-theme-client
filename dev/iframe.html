@@ -32,7 +32,7 @@
       if (domain.substr(0, 4) !== 'http') {
         domain = 'http://' + domain;
       }
-      $('#iframe').attr('src', domain + '/#/auth/sso?key='+apiKey+'&amp;view_type=server&amp;view_id='+serverID+'&amp;embed=1')
+      $('#iframe').attr('src', domain + '/#/auth/sso?key='+apiKey+'&view_type=server&view_id='+serverID+'&embed=1')
       event.preventDefault();
       return false;
     });
