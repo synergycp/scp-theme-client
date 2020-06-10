@@ -58,7 +58,6 @@
   "ipmi": {
     "TITLE": "Power Controls",
     "NOT_ENABLED": "This server is not IPMI-ready",
-    "ADDRESS": "IPMI IP Address",
     "BMC": {
       "TITLE": "Reset BMC",
       "modal": {
@@ -69,6 +68,10 @@
           "SUBMIT": "Reset BMC"
         }
       }
+    },
+    "web_panel": {
+      "HEADING": "Web CP",
+      "OPEN": "Open Web Control Panel"
     },
     "system": {
       "info": {
