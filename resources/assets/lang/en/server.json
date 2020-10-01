@@ -56,6 +56,7 @@
     "SRV_ID": "Server ID"
   },
   "ipmi": {
+    "HOSTNAME": "Hostname",
     "TITLE": "Power Controls",
     "NOT_ENABLED": "This server is not IPMI-ready",
     "BMC": {
