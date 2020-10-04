@@ -72,7 +72,7 @@
     },
     "web_panel": {
       "HEADING": "Web CP",
-      "OPEN": "Open Web Control Panel"
+      "OPEN": "Open {{ type }} Web Control Panel"
     },
     "system": {
       "info": {
