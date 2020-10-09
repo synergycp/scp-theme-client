@@ -3,7 +3,6 @@ var
   gulp = require('gulp'),
   ngGulp = require('scp-ng-gulp')(require('gulp'))
   $ = require('gulp-load-plugins')(),
-  gulpsync = $.sync(gulp),
   browserSync = require('browser-sync').create(),
   reload = browserSync.reload,
   PluginError = $.util.PluginError,
@@ -352,13 +351,12 @@ gulp.task('create-versions', createVersions);
 //---------------
 
 // build for production (minify)
-gulp.task('build', gulpsync.sync([
+gulp.task('build', gulp.series([
   'prod',
   'vendor',
-  'assets'
-]), function () {
-  if (isProduction) gulp.start('create-versions');
-});
+  'assets',
+  isProduction && 'create-versions'
+].filter(e => !!e));
 
 gulp.task('prod', function () {
   log('Starting production build...');
@@ -366,18 +364,20 @@ gulp.task('prod', function () {
 });
 
 // Server for development
-gulp.task('serve', gulpsync.sync([
+gulp.task('serve', gulp.series([
   'usesources',
   'default',
   'create-versions',
-  'browsersync'
-]), done);
+  'browsersync',
+  done
+]));
 
 // Server for production
-gulp.task('serve-prod', gulpsync.sync([
+gulp.task('serve-prod', gulp.series([
   'build',
-  'browsersync'
-]), done);
+  'browsersync',
+  done,
+]));
 
 // build with sourcemaps (no minify)
 gulp.task('sourcemaps', ['usesources', 'default']);
@@ -386,7 +386,7 @@ gulp.task('usesources', function () {
 });
 
 // default (no minify)
-gulp.task('default', gulpsync.sync([
+gulp.task('default', gulp.series([
   'vendor',
   'assets',
   'watch'
