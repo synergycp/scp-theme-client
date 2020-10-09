@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-exit-with-error() {
+exit_with_error() {
   CODE=$?
   echo "ERROR: $@" > /dev/stderr
   exit $CODE
 }
 
-./node_modules/.bin/gulp prod build || exit-with-error "Gulp build failed"
-tar -zcvf "../build/client.tar.gz" --transform 's,^public,client,' public || exit-with-error "Archive build failed"
+./node_modules/.bin/gulp prod build || exit_with_error "Gulp build failed"
+tar -zcvf "../build/client.tar.gz" --transform 's,^public,client,' public || exit_with_error "Archive build failed"
