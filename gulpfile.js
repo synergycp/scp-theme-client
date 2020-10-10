@@ -119,6 +119,16 @@ var cssnanoOpts = {
 // TASKS
 //---------------
 
+gulp.task("prod", function (done) {
+  log("Starting production build...");
+  isProduction = true;
+  done();
+});
+gulp.task("usesources", function (done) {
+  useSourceMaps = true;
+  done();
+});
+
 // JS APP
 gulp.task("scripts:app", function () {
   log("Building scripts..");
@@ -147,13 +157,6 @@ gulp.task("scripts:app", function () {
         stream: true,
       })
     );
-});
-
-// VENDOR BUILD
-gulp.task("vendor", ["vendor:base", "vendor:app", "vendor:exports"], function (
-  done
-) {
-  done();
 });
 
 // Build the base script to start the application from vendor assets
@@ -192,7 +195,12 @@ gulp.task("vendor:base", function () {
 });
 
 // copy files from vendor folder into the app vendor folder
-gulp.task("vendor:app", function () {
+gulp.task("vendor:app", function (done) {
+  if (!vendor.app.source.length) {
+    done();
+    return;
+  }
+
   log("Copying vendor assets..");
   var jsFilter = filter.js();
   var cssFilter = filter.css();
@@ -268,6 +276,12 @@ gulp.task("vendor:exports", function (done) {
     }
   }
 });
+
+// VENDOR BUILD
+gulp.task(
+  "vendor",
+  gulp.series(["vendor:base", "vendor:app", "vendor:exports", done])
+);
 
 function addPrefixFolder(folder, file) {
   file.dirname = folder + "/" + file.dirname;
@@ -369,6 +383,16 @@ gulp.task("create-versions", createVersions);
 // MAIN TASKS
 //---------------
 
+gulp.task(
+  "assets",
+  gulp.series([
+    "scripts:app",
+    "templates:views",
+    "templates:index",
+    "assets:raw",
+  ])
+);
+
 // build for production (minify)
 gulp.task(
   "build",
@@ -379,10 +403,11 @@ gulp.task(
   )
 );
 
-gulp.task("prod", function () {
-  log("Starting production build...");
-  isProduction = true;
-});
+// default (no minify)
+gulp.task("default", gulp.series(["vendor", "assets", "watch"]));
+
+// build with sourcemaps (no minify)
+gulp.task("sourcemaps", gulp.series(["usesources", "default"]));
 
 // Server for development
 gulp.task(
@@ -393,30 +418,15 @@ gulp.task(
 // Server for production
 gulp.task("serve-prod", gulp.series(["build", "browsersync", done]));
 
-// build with sourcemaps (no minify)
-gulp.task("sourcemaps", ["usesources", "default"]);
-gulp.task("usesources", function () {
-  useSourceMaps = true;
-});
-
-// default (no minify)
-gulp.task("default", gulp.series(["vendor", "assets", "watch"]));
-
-gulp.task("assets", [
-  "scripts:app",
-  "templates:views",
-  "templates:index",
-  "assets:raw",
-]);
-
 /////////////////////
 
-function done() {
+function done(next) {
   log("************");
   log(
     "* All Done * You can start editing your code, BrowserSync will update your browser after any change.."
   );
   log("************");
+  next();
 }
 
 // Error handler
