@@ -4,8 +4,7 @@ var path = require("path"),
 ($ = require("gulp-load-plugins")()),
   (browserSync = require("browser-sync").create()),
   (reload = browserSync.reload),
-  (PluginError = $.util.PluginError),
-  (del = require("del"));
+  (PluginError = $.util.PluginError);
 
 var createVersions = ngGulp.require("create-versions")();
 
@@ -17,10 +16,6 @@ var streamToPromise = require("stream-to-promise");
 var isProduction = false;
 // styles sourcemaps
 var useSourceMaps = false;
-
-// ignore everything that begins with underscore
-var hidden_files = "**/_*.*";
-var ignored_files = "!" + hidden_files;
 
 // MAIN PATHS
 var paths = {
@@ -75,33 +70,10 @@ var build = {
 
 // PLUGINS OPTIONS
 
-var vendorUglifyOpts = {
-  mangle: {
-    except: ["$super"], // rickshaw requires this
-  },
-};
-
 var pugOptions = {
   doctype: "html",
   basedir: __dirname,
   pretty: false,
-};
-
-var compassOpts = {
-  project: __dirname,
-  css: "public/app/css",
-  sass: paths.styles,
-  image: "public/assets/img",
-};
-
-var tplCacheOptions = {
-  root: "app",
-  filename: "templates.js",
-  //standalone: true,
-  module: "app.core",
-  base: function (file) {
-    return file.path.split("pug")[1];
-  },
 };
 
 var filter = {
@@ -119,18 +91,8 @@ var cssnanoOpts = {
 // TASKS
 //---------------
 
-gulp.task("prod", function (done) {
-  log("Starting production build...");
-  isProduction = true;
-  done();
-});
-gulp.task("usesources", function (done) {
-  useSourceMaps = true;
-  done();
-});
-
 // JS APP
-gulp.task("scripts:app", function () {
+exports["scripts:app"] = function () {
   log("Building scripts..");
   // Minify and copy all JavaScript (except vendor scripts)
   return gulp
@@ -157,7 +119,7 @@ gulp.task("scripts:app", function () {
         stream: true,
       })
     );
-});
+};
 
 // Build the base script to start the application from vendor assets
 gulp.task("vendor:base", function () {
@@ -213,7 +175,7 @@ gulp.task("vendor:app", function (done) {
       })
       .pipe($.expectFile(vendor.app.source))
       .pipe(jsFilter)
-      // .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
+      //  .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
       .pipe(jsFilter.restore())
       .pipe(cssFilter)
       .pipe($.if(isProduction, $.cssnano(cssnanoOpts)))
@@ -237,16 +199,10 @@ gulp.task("vendor:exports", function (done) {
     return Export.all().then(makeTasks);
 
     function makeTasks(exported) {
-      return Q.all(
-        _(exported).map(makeTask).filter().map(streamToPromise).value()
-      );
+      return Q.all(_(exported).map(makeTask).map(streamToPromise).value());
     }
 
     function makeTask(exp) {
-      if (!exp.files) {
-        return;
-      }
-
       var jsFilter = filter.js();
       var cssFilter = filter.css();
       var opts = {
@@ -261,10 +217,10 @@ gulp.task("vendor:exports", function (done) {
           .pipe($.expectFile(opts, exp.files))
           .pipe($.rename(addPrefixFolder.bind(null, exp.name)))
           .pipe(jsFilter)
-          // .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
+          //  .pipe($.if(isProduction, $.uglify(vendorUglifyOpts)))
           .pipe(jsFilter.restore())
           .pipe(cssFilter)
-          .pipe($.if(isProduction, $.cssnano(cssnanoOpts)))
+          //  .pipe($.if(isProduction, $.cssnano(cssnanoOpts)))
           .pipe(cssFilter.restore())
           .pipe(gulp.dest(vendor.app.dest))
           .pipe(
@@ -280,7 +236,7 @@ gulp.task("vendor:exports", function (done) {
 // VENDOR BUILD
 gulp.task(
   "vendor",
-  gulp.series(["vendor:base", "vendor:app", "vendor:exports", done])
+  gulp.series(["vendor:base", "vendor:app", "vendor:exports"])
 );
 
 function addPrefixFolder(folder, file) {
@@ -290,7 +246,7 @@ function addPrefixFolder(folder, file) {
 }
 
 // JADE
-gulp.task("templates:views", function () {
+exports["templates:views"] = function () {
   log("Building views.. ");
 
   return gulp
@@ -311,7 +267,7 @@ gulp.task("templates:views", function () {
         stream: true,
       })
     );
-});
+};
 
 gulp.task("templates:index", function () {
   log("Copying index...");
@@ -319,8 +275,8 @@ gulp.task("templates:index", function () {
   return gulp.src(source.index).pipe(gulp.dest(paths.public));
 });
 
-gulp.task("assets:raw", function () {
-  return gulp
+exports["assets:raw"] = () =>
+  gulp
     .src(source.assets)
     .pipe(gulp.dest(build.assets))
     .pipe(
@@ -328,20 +284,6 @@ gulp.task("assets:raw", function () {
         stream: true,
       })
     );
-});
-
-//---------------
-// WATCH
-//---------------
-
-// Rerun the task when a file changes
-gulp.task("watch", function () {
-  log("Watching source files..");
-
-  gulp.watch(source.scripts, ["scripts:app"]);
-  gulp.watch(source.templates.views, ["templates:views"]);
-  gulp.watch(source.assets, ["assets:raw"]);
-});
 
 // Serve files with auto reaload
 gulp.task("browsersync", function () {
@@ -379,17 +321,29 @@ gulp.task("clean", function (done) {
 
 gulp.task("create-versions", createVersions);
 
+// build with sourcemaps (no minify)
+gulp.task("usesources", function (done) {
+  useSourceMaps = true;
+  done();
+});
+
 //---------------
 // MAIN TASKS
 //---------------
 
+gulp.task("prod", function (done) {
+  log("Starting production build...");
+  isProduction = true;
+  done();
+});
+
 gulp.task(
   "assets",
-  gulp.series([
-    "scripts:app",
-    "templates:views",
+  gulp.parallel([
+    exports["scripts:app"],
+    exports["templates:views"],
     "templates:index",
-    "assets:raw",
+    exports["assets:raw"],
   ])
 );
 
@@ -397,16 +351,31 @@ gulp.task(
 gulp.task(
   "build",
   gulp.series(
-    ["prod", "vendor", "assets", isProduction && "create-versions"].filter(
-      (e) => !!e
-    )
+    [
+      "prod",
+      gulp.parallel(["vendor", "assets"]),
+      isProduction ? "create-versions" : null,
+    ].filter((e) => !!e)
   )
 );
+
+//---------------
+// WATCH
+//---------------
+
+// Rerun the task when a file changes
+gulp.task("watch", function (done) {
+  log("Watching source files..");
+
+  gulp.watch(source.scripts, exports["scripts:app"]);
+  gulp.watch(source.templates.views, exports["templates:views"]);
+  gulp.watch(source.assets, exports["assets:raw"]);
+  done();
+});
 
 // default (no minify)
 gulp.task("default", gulp.series(["vendor", "assets", "watch"]));
 
-// build with sourcemaps (no minify)
 gulp.task("sourcemaps", gulp.series(["usesources", "default"]));
 
 // Server for development
