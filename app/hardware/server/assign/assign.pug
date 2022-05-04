@@ -12,7 +12,7 @@ include /resources/angle/pug/mixins/panel
         th.shrink.v-mid(translate="server.assign.NICKNAME")
         td
           editable(
-            value="assign.server.nickname"
+            value="assign.server.nickname",
             on-save="assign.saveNickname()"
           )
       tr
@@ -23,17 +23,14 @@ include /resources/angle/pug/mixins/panel
         th.shrink.v-mid(translate="server.assign.client.TITLE")
         td(ng-init="access = assign.server.access")
           a(
-            ng-if="access.sub"
-            ui-sref="app.hardware.server.list({ client: access.sub.client.id })"
+            ng-if="access.sub",
+            ui-sref="app.hardware.server.list({ client: access.sub.client.id })",
             ng-bind="access.sub.client.name"
           )
-          span(
-            ng-if="!access.sub"
-            translate="server.assign.client.NONE"
-          )
-          span  (
+          span(ng-if="!access.sub", translate="server.assign.client.NONE")
+          span (
           a(
-            ng-click="assign.client.modal()"
+            ng-click="assign.client.modal()",
             translate="server.assign.client.{{ access.sub ? 'REASSIGN' : 'ASSIGN' }}"
           )
           span )
@@ -43,7 +40,9 @@ include /resources/angle/pug/mixins/panel
       //- Start Entities
       tr(ng-repeat-start="entity in assign.entities.items")
         th.shrink.v-mid(translate="server.assign.entity.TITLE")
-        td(ng-bind="entity.nickname")
+        td(
+          ng-bind="entity.name || (entity.v4 && entity.v4.full) || (entity.v6 && entity.v6).address"
+        )
 
       //- Start IPv4
       tr(ng-if-start="entity.v4")
