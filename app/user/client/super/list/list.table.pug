@@ -1,22 +1,18 @@
 extends /resources/angle/pug/table-checkable
 
 block headings
-  th.sortable(ng-if="table.showName")
-    span(translate="client.super.list.heading.NAME")
+  th.sortable(ng-if="table.showEmail")
+    span(translate="client.super.list.heading.EMAIL")
     sort(col="last")
   th
     span(translate="client.super.list.heading.ACTIONS")
 
 block columns
-  td(
-    ng-if="table.showName"
-  )
-    span(
-      ng-bind="row.grantee.name"
-    )
+  td(ng-if="table.showEmail")
+    span(ng-bind="row.grantee.email")
   td
     .btn-group.btn-group-xs
       a.btn.btn-default(
-      	ng-click="table.list.list.confirm.delete([row])"
+        ng-click="table.list.list.confirm.delete([row])",
         translate="app.action.DELETE"
       )

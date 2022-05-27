@@ -28,7 +28,7 @@ include /resources/angle/pug/mixins/panel
             ng-bind="access.sub.client.name"
           )
           span(ng-if="!access.sub", translate="server.assign.client.NONE")
-          span (
+          span &nbsp;(
           a(
             ng-click="assign.client.modal()",
             translate="server.assign.client.{{ access.sub ? 'REASSIGN' : 'ASSIGN' }}"
