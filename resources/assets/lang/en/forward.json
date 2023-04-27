@@ -4,7 +4,8 @@
       "list": {
         "heading": {
           "IP": "IP Address",
-          "OWNER": "Device"
+          "OWNER": "Device",
+          "ACTIONS": "Actions"
         }
       }
     }
