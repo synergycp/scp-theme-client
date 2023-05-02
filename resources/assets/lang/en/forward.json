@@ -6,7 +6,8 @@
           "IP": "IP Address",
           "OWNER": "Device",
           "ACTIONS": "Actions"
-        }
+        },
+        "DELETE": "Delete"
       }
     }
   }
