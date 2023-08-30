@@ -57,7 +57,7 @@
   },
   "ipmi": {
     "HOSTNAME": "Hostname",
-    "TITLE": "Power Controls",
+    "TITLE": "Controls",
     "NOT_ENABLED": "This server is not IPMI-ready",
     "BMC": {
       "TITLE": "Reset BMC",
