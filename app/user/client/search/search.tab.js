@@ -1,11 +1,10 @@
 (function () {
-  'use strict';
+  "use strict";
 
   angular
-    .module('app.user.client.search')
-    .factory('ClientSearchTab', ClientSearchTabFactory)
-    .run(addClientSearchTab)
-    ;
+    .module("app.user.client.search")
+    .factory("ClientSearchTab", ClientSearchTabFactory)
+    .run(addClientSearchTab);
 
   /**
    * Add the ClientSearchTab to the Search tabs list.
@@ -17,7 +16,7 @@
     Auth.whileLoggedIn(add, remove);
 
     function add() {
-      Search.tab.add(tab = ClientSearchTab());
+      Search.tab.add((tab = ClientSearchTab()));
     }
 
     function remove() {
@@ -30,39 +29,34 @@
    *
    * @ngInject
    */
-  function ClientSearchTabFactory ($state, SubClientList, ListFilter, RouteHelpers) {
+  function ClientSearchTabFactory(SubClientList, ListFilter, RouteHelpers) {
     return function () {
-        var list = SubClientList();
-        return new ClientSearchTab(
-          list,
-          $state,
-          ListFilter(list),
-          RouteHelpers
-        );
+      var list = SubClientList();
+      return new ClientSearchTab(list, ListFilter(list), RouteHelpers);
     };
   }
 
-  function ClientSearchTab (list, $state, filter, RouteHelpers) {
+  function ClientSearchTab(list, filter, RouteHelpers) {
     var tab = this;
 
     tab.list = list;
     tab.filter = filter;
-    tab.name = 'clients';
-    tab.lang = 'client';
-    tab.text = 'client.search.TITLE';
+    tab.name = "clients";
+    tab.lang = "client";
+    tab.text = "client.search.TITLE";
     tab.getState = getState;
     tab.getStateParams = getStateParams;
     tab.results = {
-      url: RouteHelpers.basepath('user/client/search/search.tab.html'),
+      url: RouteHelpers.basepath("user/client/search/search.tab.html"),
     };
     tab.typeaheadTemplateUrl = RouteHelpers.basepath(
-      'user/client/search/search.item.html'
+      "user/client/search/search.item.html"
     );
 
     //////////
 
     function getState() {
-      return 'app.hardware.server.list';
+      return "app.hardware.server.list";
     }
 
     function getStateParams($item) {

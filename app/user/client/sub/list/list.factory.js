@@ -17,13 +17,14 @@
         return;
       }
 
-      var currentUserId = ApiKey.owner().id;
-      var list = List('client/'+currentUserId+'/sub');
+      var list = List('client/*/sub');
       var clientList = List('client');
       
       list.confirm = ListConfirm(list, 'client.sub.modal.delete');
-      list.bulk.add('Send Email', function (clients) {
-        return ClientModal.sendEmail(clients).open().result;
+      list.bulk.add('Send Email', function (subClients) {
+        return ClientModal.sendEmail(subClients.map(function (subClient) {
+          return subClient.child;
+        })).open().result;
       });
       list.bulk.add('Delete', list.confirm.delete);
       list.transform.add(function (item) {

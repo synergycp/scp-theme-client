@@ -3,8 +3,11 @@
     "acl": {
       "list": {
         "heading": {
-          "IP": "IP Address"
-        }
+          "IP": "IP Address",
+          "OWNER": "Device",
+          "ACTIONS": "Actions"
+        },
+        "DELETE": "Delete"
       }
     }
   }
