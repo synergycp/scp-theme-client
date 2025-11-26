@@ -9,7 +9,6 @@ exit_with_error() {
 mkdir -p build
 ./node_modules/.bin/gulp prod build || exit_with_error "Gulp build failed"
 
-# Eliminar node_modules antes de crear el tar
 find public/vendor -type d -name 'node_modules' -exec rm -rf {} + 2>/dev/null || true
 
 tar -zcvf "build/client.tar.gz" \
