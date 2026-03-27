@@ -29,6 +29,7 @@
     };
     assign.client = {
       modal: assignClientModal,
+      subSuperAccess: hasSubSuperAccess, //why doesnt this work?
     };
     assign.saveNickname = saveNickname;
 
@@ -62,6 +63,10 @@
      */
     function assignClientModal() {
       return ServerAssignModal.client([assign.server], assign.server.access.sub);
+    }
+
+    function hasSubSuperAccess() {
+      return false; //why doesnt this work? putting false in above works but this doesnt.
     }
   }
 })();

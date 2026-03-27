@@ -19,7 +19,7 @@ include /resources/angle/pug/mixins/panel
         th.shrink.v-mid(translate="server.assign.SRV_ID")
         td(ng-bind="assign.server.srv_id")
 
-      tr
+      tr(ng-if="assign.client.subSuperAccess") 
         th.shrink.v-mid(translate="server.assign.client.TITLE")
         td(ng-init="access = assign.server.access")
           a(
