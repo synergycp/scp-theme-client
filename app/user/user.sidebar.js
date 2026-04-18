@@ -23,6 +23,9 @@
     }).item({
       text: "Super Clients",
       sref: "app.user.client.super.list"
+    }).item({
+      text: "Manage Consoles",
+      sref: "app.hardware.console.list",
     });
   }
 })();
