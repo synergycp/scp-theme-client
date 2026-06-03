@@ -34,11 +34,6 @@
     ////////////
 
     function activate() {
-      vm.list.on('load', function(items) {
-        _(items).forEach(function(item) {
-          item.name = item.grantee.name;
-        });
-      });
       $scope.$on('$destroy', onDestroy);
     }
 

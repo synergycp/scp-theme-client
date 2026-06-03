@@ -48,6 +48,7 @@
       return Api.all('entity')
         .getList({
           server: assign.server.id,
+          include_pool_ips: true,
         })
         .then(storeEntities);
     }

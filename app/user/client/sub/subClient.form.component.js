@@ -1,29 +1,28 @@
 (function () {
-  'use strict';
+  "use strict";
 
   var INPUTS = {
-    email: '',
-    first: '',
-    last: '',
+    email: "",
+    first: "",
+    last: "",
     sendEmail: {
       welcome: true,
-    }
+    },
+    password: null,
   };
 
   angular
-    .module('app.user.client.sub')
-    .component('subClientForm', {
-      require: {
-      },
+    .module("app.user.client.sub")
+    .component("subClientForm", {
+      require: {},
       bindings: {
-        form: '=',
+        form: "=",
       },
-      controller: 'SubClientFormCtrl as subClientForm',
+      controller: "SubClientFormCtrl as subClientForm",
       transclude: true,
-      templateUrl: 'app/user/client/sub/subClient.form.html'
+      templateUrl: "app/user/client/sub/subClient.form.html",
     })
-    .controller('SubClientFormCtrl', SubClientFormCtrl)
-    ;
+    .controller("SubClientFormCtrl", SubClientFormCtrl);
 
   /**
    * @ngInject
@@ -37,12 +36,16 @@
 
     function init() {
       subClientForm.form.getData = getData;
-      subClientForm.input = subClientForm.form.input = subClientForm.form.input || {};
+      subClientForm.input = subClientForm.form.input =
+        subClientForm.form.input || {};
       _.assign(subClientForm.input, INPUTS);
-      (subClientForm.form.on || function() {})('created', function (result) {
-        return subClientForm.input.sendEmail.welcome && Api.all('client/'+result.id+'/email').post({
-          type: 'client-account-created',
-        });
+      (subClientForm.form.on || function () {})("created", function (result) {
+        return (
+          subClientForm.input.sendEmail.welcome &&
+          Api.all("client/" + result.id + "/email").post({
+            type: "client-account-created",
+          })
+        );
       });
     }
 

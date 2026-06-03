@@ -1,30 +1,29 @@
 (function () {
-  'use strict';
+  "use strict";
 
   var INPUTS = {
-    email: '',
-    first: '',
-    last: '',
+    email: "",
+    first: "",
+    last: "",
     acknowledged: false,
     sendEmail: {
       welcome: true,
-    }
+    },
+    password: null,
   };
 
   angular
-    .module('app.user.client.super')
-    .component('superClientForm', {
-      require: {
-      },
+    .module("app.user.client.super")
+    .component("superClientForm", {
+      require: {},
       bindings: {
-        form: '=',
+        form: "=",
       },
-      controller: 'SuperClientFormCtrl as superClientForm',
+      controller: "SuperClientFormCtrl as superClientForm",
       transclude: true,
-      templateUrl: 'app/user/client/super/superClient.form.html'
+      templateUrl: "app/user/client/super/superClient.form.html",
     })
-    .controller('SuperClientFormCtrl', SuperClientFormCtrl)
-    ;
+    .controller("SuperClientFormCtrl", SuperClientFormCtrl);
 
   /**
    * @ngInject
@@ -38,13 +37,17 @@
 
     function init() {
       superClientForm.form.getData = getData;
-      superClientForm.input = superClientForm.form.input = superClientForm.form.input || {};
+      superClientForm.input = superClientForm.form.input =
+        superClientForm.form.input || {};
       _.assign(superClientForm.input, INPUTS);
 
-      (superClientForm.form.on || function() {})('created', function (result) {
-        return superClientForm.input.sendEmail.welcome && Api.all('client/'+result.grantee.id+'/email').post({
-          type: 'client-account-created',
-        });
+      (superClientForm.form.on || function () {})("created", function (result) {
+        return (
+          superClientForm.input.sendEmail.welcome &&
+          Api.all("client/" + result.grantee.id + "/email").post({
+            type: "client-account-created",
+          })
+        );
       });
     }
 

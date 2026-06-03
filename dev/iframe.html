@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SynergyCP iframe test</title>
+</head>
+<body>
+  <form id="iframe-form">
+    <label>
+      Domain:<br />
+      <input type="text" id="iframe-domain" value="http://localhost:8002" />
+    </label><br />
+    <label>
+      API Key:<br />
+      <input type="text" id="iframe-api-key" value="" />
+    </label><br />
+    <label>
+      Server ID:<br />
+      <input type="text" id="iframe-server-id" value="1" />
+    </label><br />
+    <input type="submit" value="Go" />
+  </form>
+  <iframe src="" id="iframe" width="100%" height="1000px">
+    <p>iFrames are not supported by your browser.</p>
+  </iframe>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $('#iframe-form').on('submit', function (event) {
+      var domain = $('#iframe-domain').val();
+      var apiKey = $('#iframe-api-key').val();
+      var serverID = $('#iframe-server-id').val();
+      if (domain.substr(0, 4) !== 'http') {
+        domain = 'http://' + domain;
+      }
+      $('#iframe').attr('src', domain + '/#/auth/sso?key='+apiKey+'&view_type=server&view_id='+serverID+'&embed=1')
+      event.preventDefault();
+      return false;
+    });
+  </script>
+</body>
+</html>

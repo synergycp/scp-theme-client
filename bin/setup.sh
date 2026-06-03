@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 sudo apt-get install ruby-dev
 

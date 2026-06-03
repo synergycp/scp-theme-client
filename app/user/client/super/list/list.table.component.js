@@ -1,22 +1,21 @@
 (function () {
-  'use strict';
+  "use strict";
 
   angular
-    .module('app.user.client.super.list')
-    .component('superClientTable', {
+    .module("app.user.client.super.list")
+    .component("superClientTable", {
       require: {
-        list: '\^list',
+        list: "^list",
       },
       bindings: {
-        showName: '=?',
-        showActions: '=?',
+        showEmail: "=?",
+        showActions: "=?",
       },
-      controller: 'SuperClientTableCtrl as table',
+      controller: "SuperClientTableCtrl as table",
       transclude: true,
-      templateUrl: 'app/user/client/super/list/list.table.html',
+      templateUrl: "app/user/client/super/list/list.table.html",
     })
-    .controller('SuperClientTableCtrl', SuperClientTableCtrl)
-    ;
+    .controller("SuperClientTableCtrl", SuperClientTableCtrl);
 
   /**
    * @ngInject
@@ -30,7 +29,7 @@
 
     function init() {
       _.defaults(table, {
-        showName: true,
+        showEmail: true,
         showActions: true,
       });
     }

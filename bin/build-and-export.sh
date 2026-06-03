@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-VERSION=$1
+exit_with_error() {
+  CODE=$?
+  echo "ERROR: $@" > /dev/stderr
+  exit $CODE
+}
 
-gulp prod build
-tar -zcvf "/scp/install.synergycp.com/bm/${VERSION}/theme/default/client.tar.gz" --transform 's,^public,client,' public
+mkdir -p build
+./node_modules/.bin/gulp prod build || exit_with_error "Gulp build failed"
+tar -zcvf "build/client.tar.gz" --transform 's,^public,client,' public || exit_with_error "Archive build failed"

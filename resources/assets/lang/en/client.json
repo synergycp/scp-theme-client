@@ -95,7 +95,7 @@
         }
       },
       "heading": {
-        "NAME": "Name",
+        "EMAIL": "Email",
         "ACTIONS": "Actions"
       }
     },
