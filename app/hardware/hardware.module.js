@@ -4,5 +4,6 @@
   angular
     .module('app.hardware', [
       'app.hardware.server',
+      'app.hardware.console',
     ]);
 })();
