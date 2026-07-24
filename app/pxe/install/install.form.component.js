@@ -84,9 +84,12 @@
       OsReloadModals.openCreate({
         loadSshKeys: function () {
           return Api.all('/ssh-key').getList().then(function (items) {
-            return items.map(function (k) {
-              return { id: k.id, name: k.name, fingerprint: k.fingerprint };
-            });
+            return {
+              keys: items.map(function (k) {
+                return { id: k.id, name: k.name, fingerprint: k.fingerprint };
+              }),
+              client_assigned: true,
+            };
           });
         },
       }).result.then(function (result) {
