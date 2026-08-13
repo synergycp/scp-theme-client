@@ -19,7 +19,7 @@
   /**
    * @ngInject
    */
-  function PxeInstallFormCtrl(Select, OsReloadModals, Api, $scope, _, $rootScope) {
+  function PxeInstallFormCtrl(Select, OsReloadModals, Api, Alert, $scope, _, $rootScope) {
     var pxeInstallForm = this;
 
     pxeInstallForm.$onInit = init;

@@ -44,7 +44,6 @@
         $api.post({ name: vm.form.name, public_key: vm.form.public_key })
           .then(function () {
             vm.form = { name: '', public_key: '' };
-            Alert.success('SSH public key added.');
           })
           .then(refresh)
       );
