@@ -1,0 +1,10 @@
+{
+  "delete": {
+    "confirm": {
+      "TITLE": "Are you sure?",
+      "BODY": "Deleting this SSH public key removes it from your account. Any OS reload that referenced it keeps the key it was given.",
+      "CANCEL": "Cancel",
+      "SUBMIT": "Delete Permanently"
+    }
+  }
+}
