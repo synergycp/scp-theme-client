@@ -19,7 +19,7 @@
   /**
    * @ngInject
    */
-  function PxeInstallFormCtrl(Select, OsReloadModals, $scope, _, $rootScope) {
+  function PxeInstallFormCtrl(Select, OsReloadModals, Api, Alert, $scope, _, $rootScope) {
     var pxeInstallForm = this;
 
     pxeInstallForm.$onInit = init;
@@ -81,7 +81,18 @@
         return Alert.warning('Please select an OS Edition.');
       }
 
-      OsReloadModals.openCreate().result.then(function (result) {
+      OsReloadModals.openCreate({
+        loadSshKeys: function () {
+          return Api.all('/ssh-key').getList().then(function (items) {
+            return {
+              keys: items.map(function (k) {
+                return { id: k.id, name: k.name, fingerprint: k.fingerprint };
+              }),
+              client_assigned: true,
+            };
+          });
+        },
+      }).result.then(function (result) {
         create({
           pxe_profile_id: profile.id,
           disk: {
@@ -91,6 +102,9 @@
           queue: true,
           edition_id: (edition || {}).id,
           license_key: pxeInstallForm.input.licenseKey,
+          login_type: result.login_type,
+          ssh_key_ids: result.ssh_key_ids,
+          ssh_keys_raw: result.ssh_keys_raw,
           password: result.password,
         })
       });
