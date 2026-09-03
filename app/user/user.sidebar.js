@@ -24,6 +24,9 @@
       text: "Super Clients",
       sref: "app.user.client.super.list"
     }).item({
+      text: "SSH Public Keys",
+      sref: "app.user.ssh-key.home",
+    }).item({
       text: "Manage Consoles",
       sref: "app.hardware.console.list",
     });
