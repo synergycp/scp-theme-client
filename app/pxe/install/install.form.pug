@@ -16,6 +16,7 @@ form(ng-submit="pxeInstallForm.submit()")
             repeat="server in pxeInstallForm.server.items track by server.id"
             refresh="pxeInstallForm.server.load($select.search)"
             refresh-delay="400"
+            infinite-scroll="pxeInstallForm.server.loadNext()"
           )
             span(ng-bind-html="server.name | highlight: $select.search")
 
@@ -42,6 +43,7 @@ form(ng-submit="pxeInstallForm.submit()")
               ].join('')
               refresh="pxeInstallForm.input.profile.load($select.search)"
               refresh-delay="400"
+              infinite-scroll="pxeInstallForm.input.profile.loadNext()"
             )
               span(ng-bind-html="choice.name | highlight: $select.search")
 
@@ -60,6 +62,7 @@ form(ng-submit="pxeInstallForm.submit()")
                 ].join('')
                 refresh="pxeInstallForm.input.edition.load($select.search)"
                 refresh-delay="400"
+                infinite-scroll="pxeInstallForm.input.edition.loadNext()"
               )
                 span(ng-bind-html="choice.name | highlight: $select.search")
 
