@@ -82,6 +82,7 @@
       }
 
       OsReloadModals.openCreate({
+        isLive: !!profile.is_live,
         loadSshKeys: function () {
           return Api.all('/ssh-key').getList().then(function (items) {
             return {
