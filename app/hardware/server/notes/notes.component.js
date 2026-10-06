@@ -32,7 +32,7 @@
     //////////
 
     function init() {
-      notes.isExpanded = notes.server.notes.client;
+      notes.isExpanded = notes.server.notes.client || notes.server.notes.info;
     }
 
     function save() {

@@ -11,6 +11,10 @@ form.panel.panel-default(
       a.btn.btn-default
         span.fa(ng-class="notes.isExpanded ? 'fa-minus' : 'fa-plus'")
   .panel-body(ng-class="notes.isExpanded ? '' : 'hidden'")
+    .form-group(ng-if="notes.server.notes.info")
+      label.control-label(translate="server.notes.INFO")
+      p.form-control-static(ng-bind="notes.server.notes.info")
+
     .form-group
       label.control-label(
         for="form-client-notes"
