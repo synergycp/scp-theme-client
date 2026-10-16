@@ -1,0 +1,46 @@
+.row
+  .col-md-8
+    .panel.panel-default(ng-class="vm.loader.class")
+      .loader
+      .panel-heading
+        h3.panel-title SSH Public Keys
+      .panel-body
+        p.help-block
+          | Store SSH <strong>public</strong> keys to use when reloading an OS.
+          | Never paste a private key.
+        table.table(ng-if="vm.keys.length")
+          thead
+            tr
+              th Name
+              th Fingerprint
+              th Stored
+              th
+          tbody
+            tr(ng-repeat="key in vm.keys")
+              td {{ key.name }}
+              td.code
+                | {{ key.fingerprint | limitTo:20 }}{{ key.fingerprint.length > 20 ? '...' : '' }}
+              td {{ key.created_at.iso_8601 | date }}
+              td.text-right
+                button.btn.btn-default.btn-xs(ng-click="vm.view(key)") View
+                | &nbsp;
+                button.btn.btn-danger.btn-xs(ng-click="vm.remove(key)") Delete
+        p(ng-if="!vm.keys.length") You have not stored any SSH public keys yet.
+
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Add SSH Public Key
+      .panel-body
+        form(ng-submit="vm.add()")
+          .form-group
+            label Name
+            input.form-control(ng-model="vm.form.name" placeholder="e.g. laptop")
+          .form-group
+            label SSH Public Key
+            textarea.form-control(
+              ng-model="vm.form.public_key"
+              rows="5"
+              placeholder="ssh-ed25519 AAAA... user@host"
+            )
+          button.btn.btn-primary(type="submit") Add Key

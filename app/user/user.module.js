@@ -6,5 +6,6 @@
       'scp.angle.layout.list',
       'scp.core.api',
       'app.user.client',
+      'app.user.ssh-key',
     ]);
 })();

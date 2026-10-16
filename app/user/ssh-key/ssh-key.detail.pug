@@ -1,0 +1,22 @@
+.modal-header
+  button.close(type="button" ng-click="modal.$dismiss()") &times;
+  h4.modal-title SSH Public Key
+
+.modal-body
+  dl.dl-horizontal
+    dt Name
+    dd {{ modal.key.name }}
+    dt Fingerprint
+    dd.code {{ modal.key.fingerprint }}
+    dt Stored
+    dd {{ modal.key.created_at.iso_8601 | date:'medium' }}
+  .form-group
+    label Public Key
+    textarea.form-control(
+      readonly
+      rows="6"
+      style="resize: none; min-height: 120px; max-height: 300px; overflow-y: auto;"
+    ) {{ modal.key.public_key }}
+
+.modal-footer
+  button.btn.btn-secondary(type="button" ng-click="modal.$dismiss()") Close
