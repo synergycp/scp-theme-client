@@ -26,6 +26,9 @@
     pxeInstallForm.server = Select('server').on('change', syncServer);
     pxeInstallForm.isEnabled = true;
     pxeInstallForm.canRAID = false;
+    pxeInstallForm.disks = [];
+    pxeInstallForm.diskChoices = [];
+    pxeInstallForm.isDiskIndexHidden = isDiskIndexHidden;
     pxeInstallForm.submit = submit;
     pxeInstallForm.input = {
       profile: Select('pxe/profile').on('change', syncProfile),
@@ -51,7 +54,35 @@
       server.get().then(function (res) {
         pxeInstallForm.isEnabled = res.is_pxe_ready;
         pxeInstallForm.canRAID = res.raid_soft_ready;
+        syncDiskChoices(res.disks || []);
       });
+    }
+
+    function syncDiskChoices(disks) {
+      pxeInstallForm.disks = disks;
+      pxeInstallForm.diskChoices = _.map(disks, function (disk, index) {
+        return {
+          index: index,
+          number: index + 1,
+          name: disk.name,
+        };
+      });
+
+      if (pxeInstallForm.input.disk.index >= disks.length) {
+        pxeInstallForm.input.disk.index = 0;
+      }
+    }
+
+    /**
+     * A RAID across two identical disks uses both of them, so there is
+     * nothing to choose.
+     */
+    function isDiskIndexHidden() {
+      var disks = pxeInstallForm.disks;
+
+      return pxeInstallForm.input.disk.raid !== 'None' &&
+        disks.length === 2 &&
+        disks[0].id === disks[1].id;
     }
 
     function syncProfile(profile) {
@@ -71,7 +102,7 @@
       var profile = pxeInstallForm.input.profile.selected;
       var edition = (pxeInstallForm.input.edition || {}).selected;
       var raid = pxeInstallForm.input.disk.raid !== 'None' && pxeInstallForm.canRAID ? pxeInstallForm.input.disk.raid : undefined;
-      var index = pxeInstallForm.input.disk.index;
+      var index = isDiskIndexHidden() ? 0 : pxeInstallForm.input.disk.index;
 
       if (!profile) {
         return Alert.warning('Please select an OS Reload Profile.');

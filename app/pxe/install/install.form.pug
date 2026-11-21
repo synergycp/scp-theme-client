@@ -89,9 +89,18 @@ form(ng-submit="pxeInstallForm.submit()")
               translate="os-reload.server.disk.raid.ONE"
             )
 
-          +field("os-reload.server.disk.index.LABEL")(
-            ng-model="pxeInstallForm.input.disk.index"
-          )
+          div(ng-if="!pxeInstallForm.isDiskIndexHidden()")
+            +label("os-reload.server.disk.index.LABEL")
+              select.form-control(
+                ng-model="pxeInstallForm.input.disk.index"
+                ng-options=[
+                  "choice.index as (",
+                    "('os-reload.server.disk.index.OPTION' | translate)",
+                    "+ ' ' + choice.number + ': ' + choice.name",
+                  ") for choice in pxeInstallForm.diskChoices",
+                ].join('')
+              )
+              p.help-block(translate="os-reload.server.disk.index.HELP")
 
     .panel-footer.clearfix(ng-if="pxeInstallForm.isEnabled || !pxeInstallForm.server.selected")
       .pull-right
