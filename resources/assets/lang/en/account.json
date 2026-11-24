@@ -13,7 +13,8 @@
   },
   "key": {
     "list": {
-      "TITLE": "API Keys"
+      "TITLE": "API Keys",
+      "UNAVAILABLE": "API keys are turned off for client accounts on this site. Existing keys do not work and new ones cannot be added."
     },
     "filter": {
       "search": {
