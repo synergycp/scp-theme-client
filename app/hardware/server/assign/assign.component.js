@@ -19,7 +19,7 @@
   /**
    * @ngInject
    */
-  function ServerAssignCtrl(Api, ServerAssignModal) {
+  function ServerAssignCtrl(Api, ServerAssignModal, DirectLogin) {
     var assign = this;
 
     assign.$onInit = init;
@@ -42,6 +42,13 @@
 
     function init() {
       assign.entities.load();
+
+      // [BA-404] Clients who were stopped from sharing servers. A client
+      // the server is already shared with can still be removed.
+      assign.cannotShare = false;
+      DirectLogin.accountOptions().then(function (options) {
+        assign.cannotShare = options.subClientsDisabled;
+      });
     }
 
     function syncEntities() {

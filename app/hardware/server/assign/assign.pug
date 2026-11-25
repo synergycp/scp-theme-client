@@ -28,12 +28,13 @@ include /resources/angle/pug/mixins/panel
             ng-bind="access.sub.client.name"
           )
           span(ng-if="!access.sub", translate="server.assign.client.NONE")
-          span &nbsp;(
-          a(
-            ng-click="assign.client.modal()",
-            translate="server.assign.client.{{ access.sub ? 'REASSIGN' : 'ASSIGN' }}"
-          )
-          span )
+          span(ng-if="access.sub || !assign.cannotShare")
+            span &nbsp;(
+            a(
+              ng-click="assign.client.modal()",
+              translate="server.assign.client.{{ access.sub ? 'REASSIGN' : 'ASSIGN' }}"
+            )
+            span )
       tr(ng-if="assign.entities.items.length")
         td(colspan="2")
 
