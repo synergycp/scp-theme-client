@@ -17,6 +17,9 @@ block list
     list-footer
 
 block bottom-left
-  +create-form("{{ 'client.sub.form.title.ADD' | translate }}")
-    sub-client-form(form="vm.create")
+  //- [BA-404] Not for clients who were stopped from adding other clients.
+  div(ng-if="!vm.cannotAdd")
+    +create-form("{{ 'client.sub.form.title.ADD' | translate }}")
+      sub-client-form(form="vm.create")
+  .alert.alert-info(ng-if="vm.cannotAdd" translate="client.sub.list.CANNOT-ADD")
 

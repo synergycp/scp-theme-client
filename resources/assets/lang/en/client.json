@@ -43,6 +43,7 @@
     "list": {
       "TITLE": "Sub Clients",
       "NO-SERVERS": "-",
+      "CANNOT-ADD": "Your account cannot add Sub Clients. The ones listed here still have access, and you can remove them.",
       "EMPTY": "No Sub Clients found. You can create one below, which will allow you to add that client to any of your servers.",
       "filter": {
         "search": {
@@ -88,6 +89,7 @@
     "list": {
       "TITLE": "Super Clients",
       "EMPTY": "No Super Clients found. You can create one below.",
+      "CANNOT-ADD": "Your account cannot add Super Clients. The ones listed here still have access, and you can remove them.",
       "filter": {
         "search": {
           "LABEL": "Search",

@@ -9,7 +9,7 @@
   /**
    * @ngInject
    */
-  function SubClientIndexCtrl(SubClientList, ListFilter, $state, $scope, ApiKey, EventEmitter) {
+  function SubClientIndexCtrl(SubClientList, ListFilter, $state, $scope, ApiKey, EventEmitter, DirectLogin) {
     var vm = this;
     $state.transitionTo($state.current.name, {client: ApiKey.owner().id}, { notify: false, inherit: true, location: 'replace'});
 
@@ -35,6 +35,12 @@
 
     function activate() {
       $scope.$on('$destroy', onDestroy);
+
+      // [BA-404] Existing ones stay listed and can be removed.
+      vm.cannotAdd = false;
+      DirectLogin.accountOptions().then(function (options) {
+        vm.cannotAdd = options.subClientsDisabled;
+      });
     }
 
     function create() {
