@@ -16,7 +16,11 @@
     "TEXT": "This {{ type }} does not have bandwidth setup."
   },
   "billing": {
-    "USAGE": "You have used {{ used }} out of {{ max }} since {{ since }}."
+    "USAGE": "You have used {{ used }} out of {{ max }} since {{ since }}.",
+    "type": {
+      "ingress": "Only ingress traffic (arriving at your server) counts towards this limit.",
+      "egress": "Only egress traffic (leaving your server) counts towards this limit."
+    }
   },
   "stats": {
     "MIN": "Min",
