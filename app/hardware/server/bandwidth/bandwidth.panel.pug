@@ -66,3 +66,7 @@ div(style="margin-bottom: 15px")
                   translate-value-used="{{ billing.used | bitsToSize }}"
                   translate-value-since="{{ billing.cycleStart }}"
                 )
+                p.help-block(
+                  ng-if="bandwidth.billing.type === 'ingress' || bandwidth.billing.type === 'egress'"
+                  translate="bandwidth.billing.type.{{ bandwidth.billing.type }}"
+                )
